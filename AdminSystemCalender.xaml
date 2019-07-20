@@ -1,0 +1,201 @@
+﻿<UserControl x:Class="NSMSoftware.AdminSystemCalender"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:NSMSoftware"
+             xmlns:sys="clr-namespace:System;assembly=mscorlib"
+
+                          mc:Ignorable="d" 
+            xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+
+            TextElement.FontWeight="Regular"
+            TextElement.FontSize="13"
+            TextOptions.TextFormattingMode="Ideal"
+            TextOptions.TextRenderingMode="Auto"
+            FontFamily="{DynamicResource MaterialDesignFont}" MinWidth="980" MinHeight="690">
+
+    <Grid Background="White">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="15*"/>
+            <RowDefinition Height="218*"/>
+        </Grid.RowDefinitions>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="163*"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock x:Name="schoolid"/>
+            <Button VerticalAlignment="Top" FontWeight="Bold" FontSize="20" HorizontalAlignment="Left" Content="EVENTS ACTIONS" Margin="10,2,0,0" Padding="5" Height="auto"
+                Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}" 
+                CommandTarget="{Binding ElementName=EventActions}" />
+        </Grid>
+        <Grid Grid.Row="1" >
+            <materialDesign:DialogHost IsOpen="False" x:Name="EventActions">
+                <materialDesign:DialogHost.DialogContent>
+                    <StackPanel Margin="10" Width="600"  Background="Aquamarine" >
+                        <materialDesign:PackIcon Margin="0, 20, 0, 0" Foreground="Green" Kind="Eventbrite" Width="100" Height="100" VerticalAlignment="Center"  HorizontalAlignment="Center"/>
+                        <ScrollViewer Height="500" VerticalScrollBarVisibility="Hidden">
+                            <StackPanel>
+                                <materialDesign:Card Margin="0, 2, 0, 0">
+                                    <StackPanel Margin="5">
+                                        <TextBlock Text="just barely" FontSize="20" FontWeight="Bold" Margin="10, 10, 0, 0"/>
+                                        <TextBlock Text="There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration." FontSize="18"  Margin="10, 10, 0, 0" TextWrapping="Wrap"/>
+                                        <TextBlock Text="12th June 2018" FontSize="18" FontWeight="Bold" Margin="10, 10, 0, 0"/>
+                                        <Button Content="ACTIONS" />
+                                    </StackPanel>
+                                </materialDesign:Card>
+                                <materialDesign:Card Margin="0, 2, 0, 0">
+                                    <StackPanel Margin="5">
+                                        <TextBlock Text="just barely" FontSize="20" FontWeight="Bold" Margin="10, 10, 0, 0"/>
+                                        <TextBlock Text="There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration." FontSize="18"  Margin="10, 10, 0, 0" TextWrapping="Wrap"/>
+                                        <TextBlock Text="12th June 2018" FontSize="18" FontWeight="Bold" Margin="10, 10, 0, 0"/>
+                                        <Button Content="ACTIONS" />
+                                    </StackPanel>
+                                </materialDesign:Card>
+                                <materialDesign:Card Margin="0, 2, 0, 0">
+                                    <StackPanel Margin="5">
+                                        <TextBlock Text="just barely" FontSize="20" FontWeight="Bold" Margin="10, 10, 0, 0"/>
+                                        <TextBlock Text="There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration." FontSize="18"  Margin="10, 10, 0, 0" TextWrapping="Wrap"/>
+                                        <TextBlock Text="12th June 2018" FontSize="18" FontWeight="Bold" Margin="10, 10, 0, 0"/>
+                                        <Button Content="ACTIONS" />
+                                    </StackPanel>
+                                </materialDesign:Card>
+                                <materialDesign:Card Margin="0, 2, 0, 0">
+                                    <StackPanel Margin="5">
+                                        <TextBlock Text="just barely" FontSize="20" FontWeight="Bold" Margin="10, 10, 0, 0"/>
+                                        <TextBlock Text="There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration." FontSize="18"  Margin="10, 10, 0, 0" TextWrapping="Wrap"/>
+                                        <TextBlock Text="12th June 2018" FontSize="18" FontWeight="Bold" Margin="10, 10, 0, 0"/>
+                                        <Button Content="ACTIONS" />
+                                    </StackPanel>
+                                </materialDesign:Card>
+                            </StackPanel>
+                        </ScrollViewer>
+
+                        <Button Padding="0,5" Width="250" Height="50" Content="CLOSE" Background="red" Margin="0, 10, 0, 0" FontSize="24" Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}" CommandTarget="{Binding ElementName=AddAdminPrivilage}" Style="{DynamicResource MaterialDesignFlatButton}" />
+                    </StackPanel>
+                </materialDesign:DialogHost.DialogContent>
+            </materialDesign:DialogHost>
+            <materialDesign:DialogHost IsOpen="False" x:Name="SuccessAlert">
+                <materialDesign:DialogHost.DialogContent>
+                    <StackPanel  Width="500" Height="auto" Background="GreenYellow">
+                        <materialDesign:PackIcon Margin="0, 20, 0, 0" Foreground="White" Kind="Calendar" Width="100" Height="100" VerticalAlignment="Center"  HorizontalAlignment="Center"/>
+
+                        <TextBlock Padding="0,5" x:Name="LoginAlertTitle" Text="ALERT" FontWeight="Bold" FontSize="36" TextAlignment="Center" />
+                        <Button Padding="0,5" Width="250" Height="50" Content="CLOSE ALERT" Margin="0, 10, 0, 0" FontSize="24" Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}" CommandTarget="{Binding ElementName=SuccessAlert}" Style="{DynamicResource MaterialDesignFlatButton}" />
+
+                    </StackPanel>
+                </materialDesign:DialogHost.DialogContent>
+            </materialDesign:DialogHost>
+            <Rectangle Fill="#FFF4F4F5" RadiusY="20" RadiusX="20" Margin="5" >
+                <Rectangle.Effect>
+                    <DropShadowEffect Color="#FF6176D4"/>
+                </Rectangle.Effect>
+            </Rectangle>
+
+            <Grid Margin="10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="241*"/>
+                    <ColumnDefinition Width="719*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="54*"/>
+                </Grid.RowDefinitions>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="301*"/>
+                    </Grid.RowDefinitions>
+
+                    <Grid>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="479*"/>
+                                <RowDefinition Height="147*"/>
+                            </Grid.RowDefinitions>
+                            <Grid>
+                                <Rectangle Fill="#FFF4F4F5" Margin="5" RadiusY="10" RadiusX="10">
+                                    <Rectangle.Effect>
+                                        <DropShadowEffect Color="#FF6176D4"/>
+                                    </Rectangle.Effect>
+                                </Rectangle>
+                                <materialDesign:Clock Height="Auto" Width="Auto" />
+                            </Grid>
+                            <Grid Grid.Row="1" >
+                                <Rectangle Fill="#FFF4F4F5" Margin="5" RadiusY="10" RadiusX="10">
+                                    <Rectangle.Effect>
+                                        <DropShadowEffect Color="#FF6176D4"/>
+                                    </Rectangle.Effect>
+                                </Rectangle>
+
+                            </Grid>
+                        </Grid>
+                    </Grid>
+
+                </Grid>
+                <Grid Grid.Column="1" >
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="185*"/>
+                        <RowDefinition Height="114*"/>
+                    </Grid.RowDefinitions>
+                    <Grid >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="149*"/>
+                            <ColumnDefinition Width="149*"/>
+                            <ColumnDefinition Width="115*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid >
+                            <Rectangle Fill="#FFF4F4F5" Margin="5" RadiusY="10" RadiusX="10">
+                                <Rectangle.Effect>
+                                    <DropShadowEffect Color="#FF6176D4"/>
+                                </Rectangle.Effect>
+                            </Rectangle>
+                            <Label Content="EVENT START" FontSize="24" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+                            <Calendar x:Name="StartDate" SelectedDate="{x:Static sys:DateTime.Today}" Margin="10" VerticalAlignment="Bottom"/>
+                        </Grid>
+                        <Grid Grid.Column="1">
+                            <Grid >
+                                <Rectangle Fill="#FFF4F4F5" Margin="5" RadiusY="10" RadiusX="10">
+                                    <Rectangle.Effect>
+                                        <DropShadowEffect Color="#FF6176D4"/>
+                                    </Rectangle.Effect>
+                                </Rectangle>
+                                <Label Content="EVENT END" FontSize="24" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+                                <Calendar x:Name="EndDate" SelectedDate="{x:Static sys:DateTime.Today}" Margin="10" VerticalAlignment="Bottom"  />
+                            </Grid>
+                        </Grid>
+                        <Grid Grid.Column="2">
+                            <Rectangle Fill="#FFF4F4F5" Margin="5" RadiusY="10" RadiusX="10">
+                                <Rectangle.Effect>
+                                    <DropShadowEffect Color="#FF6176D4"/>
+                                </Rectangle.Effect>
+                            </Rectangle>
+                            <ScrollViewer VerticalScrollBarVisibility="Hidden" Margin="10">
+                                <StackPanel Margin="5">
+                                    <TextBox Padding="0,5" x:Name="event_name" materialDesign:HintAssist.Hint="ENTER EVENT NAME" Style="{DynamicResource MaterialDesignFloatingHintTextBox}" Margin="0, 5" FontSize="15"/>
+                                    <TextBox Padding="0,5" x:Name="event_start_date" Text="{Binding ElementName=StartDate,Path=SelectedDate,StringFormat=d}" materialDesign:HintAssist.Hint="EVENT START DATE" Style="{DynamicResource MaterialDesignFloatingHintTextBox}" Margin="0, 5" FontSize="15"/>
+                                    <TextBox Padding="0,5" x:Name="event_end_date" Text="{Binding ElementName=EndDate,Path=SelectedDate,StringFormat=d}" materialDesign:HintAssist.Hint="EVENT END DATE" Style="{DynamicResource MaterialDesignFloatingHintTextBox}" Margin="0, 5" FontSize="15"/>
+                                    <TextBox Padding="0,5" x:Name="event_details" materialDesign:HintAssist.Hint="ENTER EVENT DETAILS" Style="{DynamicResource MaterialDesignFloatingHintTextBox}" Margin="0, 5" FontSize="15" TextWrapping="Wrap" MinLines="3"/>
+                                    <Button Content="CREATE EVENT" x:Name="CreateInstitutionEvent" Click="CreateInstitutionEvent_Click" Padding="10" Width="auto" Height="auto" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontSize="25" FontWeight="Bold"/>
+
+                                </StackPanel>
+                            </ScrollViewer>
+                        </Grid>
+                    </Grid>
+                    <Grid Grid.Row="1">
+                        <Rectangle Fill="#FFF4F4F5" Margin="5" RadiusY="10" RadiusX="10">
+                            <Rectangle.Effect>
+                                <DropShadowEffect Color="#FF6176D4"/>
+                            </Rectangle.Effect>
+                        </Rectangle>
+                        <DataGrid Margin="15" FontSize="16" x:Name="AdminEventsGrid"/>
+                    </Grid>
+
+                </Grid>
+
+            </Grid>
+
+        </Grid>
+
+    </Grid>
+</UserControl>
+

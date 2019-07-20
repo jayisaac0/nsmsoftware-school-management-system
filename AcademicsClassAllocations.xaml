@@ -1,0 +1,175 @@
+﻿<UserControl x:Class="NSMSoftware.AcademicsClassAllocations"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:NSMSoftware"
+             mc:Ignorable="d" 
+             
+            xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+
+            TextElement.FontWeight="Regular"
+            TextElement.FontSize="13"
+            TextOptions.TextFormattingMode="Ideal"
+            TextOptions.TextRenderingMode="Auto"
+            FontFamily="{DynamicResource MaterialDesignFont}" MinWidth="980" MinHeight="660">
+
+    <Grid Background="White">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="15*"/>
+            <RowDefinition Height="218*"/>
+        </Grid.RowDefinitions>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="163*"/>
+            </Grid.ColumnDefinitions>
+        </Grid>
+        <TextBox x:Name="schoolid" Text="school" HorizontalAlignment="Left" Width="40"/>
+        <TextBox x:Name="administratorid" Text="admin" HorizontalAlignment="Center" Width="40"/>
+        <Button VerticalAlignment="Top" FontWeight="Bold" FontSize="20" HorizontalAlignment="Right" Content="Create classes" Margin="10,2,0,0" Padding="5" Height="auto"
+                Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}" 
+                CommandTarget="{Binding ElementName=CreateClasses}" />
+        
+        <Grid Grid.Row="1" Background="White">
+            <materialDesign:DialogHost IsOpen="False" x:Name="SuccessAlert">
+                <materialDesign:DialogHost.DialogContent>
+                    <StackPanel  Width="500" Height="auto" Background="GreenYellow">
+                        <materialDesign:PackIcon Margin="0, 20, 0, 0" Foreground="White" Kind="MarkerCheck" Width="100" Height="100" VerticalAlignment="Center"  HorizontalAlignment="Center"/>
+
+                        <TextBlock Padding="0,5" x:Name="LoginAlertTitle" Text="ALERT" FontWeight="Bold" FontSize="36" TextAlignment="Center" />
+                        <Button Padding="0,5" Width="250" Height="50" Content="CLOSE ALERT" Margin="0, 10, 0, 0" FontSize="24" Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}" CommandTarget="{Binding ElementName=SuccessAlert}" Style="{DynamicResource MaterialDesignFlatButton}" />
+
+                    </StackPanel>
+                </materialDesign:DialogHost.DialogContent>
+            </materialDesign:DialogHost>
+            <materialDesign:DialogHost IsOpen="False" x:Name="CreateClasses" Grid.ColumnSpan="2">
+                <materialDesign:DialogHost.DialogContent>
+                    <StackPanel Margin="20" Width="500" Height="auto">
+                        <materialDesign:PackIcon Margin="0, 20, 0, 0" Foreground="Green" Kind="LockOpen" Width="100" Height="100" VerticalAlignment="Center"  HorizontalAlignment="Center"/>
+
+                        <Label Content="BIND CLASS AND STREAM" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="25" FontWeight="Bold"/>
+                        <ComboBox x:Name="SelectClass" Padding="0,5"  materialDesign:HintAssist.Hint="SELECT CLASS"  Margin="0, 20" FontSize="15">
+                        </ComboBox>
+                        <ComboBox x:Name="SelectStream" Padding="0,5"  materialDesign:HintAssist.Hint="SELECT STREAM"  Margin="0, 20" FontSize="15">
+                        </ComboBox>
+                        <Button Padding="0,5" x:Name="CreateClass" Click="CreateClass_Click" Width="250" Height="50"  Content="BIND CLASSES"   Margin="0, 10, 0, 0" FontSize="24"  Style="{DynamicResource MaterialDesignFlatButton}"/>
+                        <Button Padding="0,5" Width="250" Height="50" Content="CLOSE" Background="red" Margin="0, 10, 0, 0" FontSize="24" Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}" CommandTarget="{Binding ElementName=CreateClasses}" Style="{DynamicResource MaterialDesignFlatButton}" />
+
+                    </StackPanel>
+                </materialDesign:DialogHost.DialogContent>
+            </materialDesign:DialogHost>
+            
+            <Grid Background="White">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="743*"/>
+                </Grid.ColumnDefinitions>
+
+                <Grid Background="White">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="203*"/>
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="1" Background="White">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="79*"/>
+                            <ColumnDefinition Width="166*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="19*"/>
+                                <RowDefinition Height="187*"/>
+                            </Grid.RowDefinitions>
+                            <Grid>
+                                <Rectangle Margin="5" Fill="#FFF4F4F5" RadiusY="10" RadiusX="10">
+                                    <Rectangle.Effect>
+                                        <DropShadowEffect Color="#FF6176D4"/>
+                                    </Rectangle.Effect>
+                                </Rectangle>
+                                <TextBox  materialDesign:HintAssist.Hint="ENTER STAFF ID"  Margin="10" Style="{DynamicResource MaterialDesignFloatingHintTextBox}" FontSize="15"/>
+                            </Grid>
+                            <Grid Grid.Row="1">
+                                <Rectangle Margin="5" Fill="#FFF4F4F5" RadiusY="10" RadiusX="10">
+                                    <Rectangle.Effect>
+                                        <DropShadowEffect Color="#FF6176D4"/>
+                                    </Rectangle.Effect>
+                                </Rectangle>
+                                <ListView Margin="10" FontSize="16" x:Name="StaffList" SelectionChanged="StaffList_SelectionChanged">
+                                    <ListView.View>
+                                        <GridView>
+                                            <GridViewColumn/>
+                                        </GridView>
+                                    </ListView.View>
+                                    <ListViewItem Content="STAFF NAMES" FontWeight="Bold" HorizontalAlignment="Center"/>
+                                </ListView>
+                            </Grid>
+
+                        </Grid>
+                        <Grid Grid.Column="1">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="319*"/>
+                                <ColumnDefinition Width="345*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="170*"/>
+                                    <RowDefinition Height="170*"/>
+                                </Grid.RowDefinitions>
+                                <Grid>
+                                    <Rectangle Margin="5"  Fill="#FFF4F4F5" RadiusY="10" RadiusX="10">
+                                        <Rectangle.Effect>
+                                            <DropShadowEffect Color="#FF6176D4"/>
+                                        </Rectangle.Effect>
+                                    </Rectangle>
+                                    <ScrollViewer VerticalScrollBarVisibility="Hidden">
+                                        <StackPanel  Height="auto" Width="auto" Margin="10">
+                                            <Label Padding="0,5" Margin="0, 5" FontSize="20" FontWeight="Bold" Content="STUDENT PERSONAL DATA" VerticalAlignment="Center" HorizontalAlignment="Center" />
+                                            <TextBlock x:Name="registration_number" materialDesign:HintAssist.Hint="STAFF ID"  Margin="10" FontSize="15"/>
+                                            <ComboBox x:Name="cboSelectSubject" Padding="0,5" materialDesign:HintAssist.Hint="SELECT SUBJECT / UNIT"  Margin="10" FontSize="15">
+                                            </ComboBox>
+                                            <ComboBox x:Name="CboSelectCompleteClass" SelectionChanged="CboSelectCompleteClass_SelectionChanged" Padding="0,5"  materialDesign:HintAssist.Hint="SELECT"  Margin="10" FontSize="15">
+                                                <ComboBoxItem Content="MAKE SELECTION" HorizontalAlignment="Left" Width="277"/>
+                                            </ComboBox>
+                                            <ComboBox x:Name="txtSelectClass" SelectionChanged="txtSelectClass_SelectionChanged" materialDesign:HintAssist.Hint="CLASS"  Margin="10" FontSize="15">
+                                                <ComboBoxItem Content="MAKE SELECTION" HorizontalAlignment="Left" Width="277"/>
+                                            </ComboBox>
+                                            <ComboBox  x:Name="txtSelectStream" SelectionChanged="txtSelectStream_SelectionChanged" materialDesign:HintAssist.Hint="STREAM"  Margin="10" FontSize="15">
+                                                <ComboBoxItem Content="MAKE SELECTION" HorizontalAlignment="Left" Width="277"/>
+                                            </ComboBox>
+                                            
+                                            <Button VerticalAlignment="Bottom" HorizontalAlignment="Center" Content="ALLOCATE INSTRUCTOR" x:Name="AllocateInstructor" Click="AllocateInstructor_Click"/>
+                                        </StackPanel>
+                                    </ScrollViewer>
+                                </Grid>
+                                <Grid Grid.Row="1">
+                                    <Rectangle Margin="5" Fill="#FFF4F4F5" RadiusY="10" RadiusX="10">
+                                        <Rectangle.Effect>
+                                            <DropShadowEffect Color="#FF6176D4"/>
+                                        </Rectangle.Effect>
+                                    </Rectangle>
+                                    <ListView Margin="10" FontSize="16" x:Name="ClassesList" SelectionChanged="StaffList_SelectionChanged">
+                                        <ListView.View>
+                                            <GridView>
+                                                <GridViewColumn/>
+                                            </GridView>
+                                        </ListView.View>
+                                        <ListViewItem Content="CLASSES" FontWeight="Bold" HorizontalAlignment="Center"/>
+                                    </ListView>
+                                </Grid>
+                            </Grid>
+                            <Grid Grid.Column="1" >
+                                <Rectangle Margin="5" Fill="#FFF4F4F5" RadiusY="10" RadiusX="10">
+                                    <Rectangle.Effect>
+                                        <DropShadowEffect Color="#FF6176D4"/>
+                                    </Rectangle.Effect>
+                                </Rectangle>
+                                <DataGrid Margin="15" x:Name="GridClassAllocation"/>
+
+                            </Grid>
+                        </Grid>
+                    </Grid>
+                </Grid>
+            </Grid>
+
+        </Grid>
+
+    </Grid>
+</UserControl>

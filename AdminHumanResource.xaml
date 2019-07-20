@@ -1,0 +1,270 @@
+﻿<UserControl x:Class="NSMSoftware.AdminHumanResource"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:NSMSoftware"
+             mc:Ignorable="d" 
+             
+            xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+
+            TextElement.FontWeight="Regular"
+            TextElement.FontSize="13"
+            TextOptions.TextFormattingMode="Ideal"
+            TextOptions.TextRenderingMode="Auto"
+            FontFamily="{DynamicResource MaterialDesignFont}" MinWidth="980" MinHeight="660">
+
+    <Grid Background="White">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="15*"/>
+            <RowDefinition Height="218*"/>
+        </Grid.RowDefinitions>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="163*"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Text="schilis" x:Name="schoolid"/>
+            <materialDesign:PackIcon Kind="Plus" Height="30" Margin="5" Width="30" HorizontalAlignment="Right" RenderTransformOrigin="0.667,0.667"/>
+           
+
+        </Grid>
+        
+        <Grid Grid.Row="1" Background="White">
+            <materialDesign:DialogHost IsOpen="False" x:Name="SuccessAlert">
+                <materialDesign:DialogHost.DialogContent>
+                    <StackPanel  Width="500" Height="auto" Background="GreenYellow">
+                        <materialDesign:PackIcon Margin="0, 20, 0, 0" Foreground="White" Kind="MarkerCheck" Width="100" Height="100" VerticalAlignment="Center"  HorizontalAlignment="Center"/>
+
+                        <TextBlock Padding="0,5" x:Name="LoginAlertTitle" Text="SORRY ACCESS DENIED" FontWeight="Bold" FontSize="36" TextAlignment="Center" />
+                        <Button Padding="0,5" Width="250" Height="50" Content="CLOSE ALERT" Margin="0, 10, 0, 0" FontSize="24" Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}" CommandTarget="{Binding ElementName=SuccessAlert}" Style="{DynamicResource MaterialDesignFlatButton}" />
+
+                    </StackPanel>
+                </materialDesign:DialogHost.DialogContent>
+            </materialDesign:DialogHost>
+          
+            <materialDesign:DialogHost IsOpen="False" x:Name="AddLevel">
+                <materialDesign:DialogHost.DialogContent>
+                    <StackPanel Margin="20" Width="500" Height="auto">
+                        <TextBox Padding="0,5" materialDesign:HintAssist.Hint="ENTER CLASS" x:Name="txt_classes"  Style="{DynamicResource MaterialDesignFloatingHintTextBox}" Margin="0, 10" FontSize="20"/>
+
+                        <Button Padding="0,5" Width="250" Height="50"  Content="ADD CLASS" x:Name="AddClass" Click="AddClass_Click" Margin="0, 10, 0, 0" FontSize="24"  Style="{DynamicResource MaterialDesignFlatButton}"/>
+                        <Button Padding="0,5" Width="250" Height="50"  Content="CLOSE" Margin="0, 10, 0, 0" FontSize="24"
+                            Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}" 
+                            CommandTarget="{Binding ElementName=AddLevel}" 
+                            Style="{DynamicResource MaterialDesignFlatButton}" />
+                    </StackPanel>
+                </materialDesign:DialogHost.DialogContent>
+            </materialDesign:DialogHost>
+            <materialDesign:DialogHost IsOpen="False" x:Name="AddBlock">
+                <materialDesign:DialogHost.DialogContent>
+                    <StackPanel Margin="20" Width="500" Height="auto">
+                        <TextBox Padding="0,5" materialDesign:HintAssist.Hint="ENTER STREAM" x:Name="txt_addStream"  Style="{DynamicResource MaterialDesignFloatingHintTextBox}" Margin="0, 10" FontSize="20"/>
+
+                        <Button Padding="0,5" Width="250" Height="50"  Content="ADD STREAM" x:Name="AddStream" Click="AddStream_Click" Margin="0, 10, 0, 0" FontSize="24"  Style="{DynamicResource MaterialDesignFlatButton}"/>
+                        <Button Padding="0,5" Width="250" Height="50"  Content="CLOSE" Margin="0, 10, 0, 0" FontSize="24"
+                            Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}" 
+                            CommandTarget="{Binding ElementName=AddBlock}" 
+                            Style="{DynamicResource MaterialDesignFlatButton}" />
+                    </StackPanel>
+                </materialDesign:DialogHost.DialogContent>
+            </materialDesign:DialogHost>
+
+            <Grid Background="White">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="19*"/>
+                    <ColumnDefinition Width="9*"/>
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Column="1" Background="#FFE0DEDE">
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="15*"/>
+                        <RowDefinition Height="203*"/>
+                    </Grid.RowDefinitions>
+                    <Grid Background="#FFA42929">
+                        <StackPanel VerticalAlignment="center" Orientation="Horizontal" HorizontalAlignment="Right">
+                            <TextBlock Text="ACTIONS" VerticalAlignment="Center" FontSize="20" FontWeight="Bold" />
+                            <materialDesign:PopupBox Margin="10" PlacementMode="BottomAndAlignRightEdges" StaysOpen="False" Foreground="White" FontSize="20">
+
+                                <ListView Width="200">
+                                    <ListViewItem>
+                                        <StackPanel Orientation="Horizontal">
+                                            <materialDesign:PackIcon Foreground="green" Kind="pen" Width="25" Height="25" VerticalAlignment="Center" />
+                                            <TextBlock HorizontalAlignment="Center" Text="Edit" Margin="5" FontSize="15" />
+                                        </StackPanel>
+                                    </ListViewItem>
+                                    <ListViewItem>
+                                        <StackPanel Orientation="Horizontal">
+                                            <materialDesign:PackIcon Foreground="red" Kind="Delete" Width="25" Height="25" VerticalAlignment="Center" />
+                                            <TextBlock HorizontalAlignment="Center" Text="Delete" Margin="5" FontSize="15" />
+                                        </StackPanel>
+                                    </ListViewItem>
+                                    <ListViewItem>
+                                        <StackPanel Orientation="Horizontal">
+                                            <materialDesign:PackIcon Foreground="red" Kind="BlockHelper" Width="25" Height="25" VerticalAlignment="Center" />
+                                            <TextBlock HorizontalAlignment="Center" Text="Bock" Margin="5" FontSize="15" />
+                                        </StackPanel>
+                                    </ListViewItem>
+                                    <ListViewItem>
+                                        <StackPanel Orientation="Horizontal">
+                                            <materialDesign:PackIcon Foreground="Orange" Kind="Alert" Width="25" Height="25" VerticalAlignment="Center" />
+                                            <TextBlock HorizontalAlignment="Center" Text="Alert" Margin="5" FontSize="15" />
+                                        </StackPanel>
+                                    </ListViewItem>
+                                </ListView>
+
+
+                            </materialDesign:PopupBox>
+                        </StackPanel>
+                    </Grid>
+                    <Grid Grid.Row="1" Background="#FFFBFBFB">
+                        <Grid.RowDefinitions>
+
+                            <RowDefinition Height="12*"/>
+                        </Grid.RowDefinitions>
+                        <Grid Grid.Row="1" Background="White">
+                            <Rectangle Margin="10" Fill="#FFF4F4F5" RadiusY="20" RadiusX="20">
+                                <Rectangle.Effect>
+                                    <DropShadowEffect Color="#FF6176D4"/>
+                                </Rectangle.Effect>
+                            </Rectangle>
+                            <ListView Margin="15">
+                                <ListView.View>
+                                    <GridView>
+                                        <GridViewColumn/>
+                                    </GridView>
+                                </ListView.View>
+                                <ListViewItem Content="List View Item" Margin="5" FontSize="15" Width="auto"/>
+                                <ListViewItem Content="List View Item" Margin="5" FontSize="15" Width="auto"/>
+                                <ListViewItem Content="List View Item" Margin="5" FontSize="15" Width="auto"/>
+                                <ListViewItem Content="List View Item" Margin="5" FontSize="15" Width="auto"/>
+                                <ListViewItem Content="List View Item" Margin="5" FontSize="15" Width="auto"/>
+                                <ListViewItem Content="List View Item" Margin="5" FontSize="15" Width="auto"/>
+                            </ListView>
+                        </Grid>
+                    </Grid>
+
+                </Grid>
+                <Grid Background="White">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="203*"/>
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="1" Background="White">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="93*"/>
+                            <RowDefinition Height="113*"/>
+                        </Grid.RowDefinitions>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="333*"/>
+                                <ColumnDefinition Width="332*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid>
+                                <Rectangle Margin="10" Fill="#FFF4F4F5" RadiusY="20" RadiusX="20">
+                                    <Rectangle.Effect>
+                                        <DropShadowEffect Color="#FF6176D4"/>
+                                    </Rectangle.Effect>
+                                </Rectangle>
+
+                                <ListView Margin="15">
+                                    <ListView.View>
+                                        <GridView>
+                                            <GridViewColumn />
+                                        </GridView>
+                                    </ListView.View>
+                                    <ListViewItem Content="AVAILABLE PRIVILAGES" FontWeight="Bold" FontSize="18" VerticalAlignment="Center"  Background="red" />
+                                    <ListViewItem Content="Administrator" FontSize="18"/>
+                                    <ListViewItem Content="Staff" FontSize="18"/>
+                                    <ListViewItem Content="Library" FontSize="18"/>
+                                    <ListViewItem Content="Finance" FontSize="18"/>
+                                    <ListViewItem Content="Academics" FontSize="18"/>
+                                    <ListViewItem Content="Check more features" FontSize="18"/>
+
+                                </ListView>
+                            </Grid>
+                            <Grid Grid.Column="1">
+                                <Rectangle Margin="10" Fill="#FFF4F4F5" RadiusY="20" RadiusX="20">
+                                    <Rectangle.Effect>
+                                        <DropShadowEffect Color="#FF6176D4"/>
+                                    </Rectangle.Effect>
+                                </Rectangle>
+
+                                <ListView Margin="15">
+                                    <ListView.View>
+                                        <GridView>
+                                            <GridViewColumn />
+                                        </GridView>
+                                    </ListView.View>
+                                    <ListViewItem Content="AVAILABLE PRIVILAGES" FontWeight="Bold" FontSize="18" VerticalAlignment="Center"  Background="red" />
+                                    <ListViewItem Content="Administrator" FontSize="18"/>
+                                    <ListViewItem Content="Staff" FontSize="18"/>
+                                    <ListViewItem Content="Library" FontSize="18"/>
+                                    <ListViewItem Content="Finance" FontSize="18"/>
+                                    <ListViewItem Content="Academics" FontSize="18"/>
+                                    <ListViewItem Content="Check more features" FontSize="18"/>
+
+                                </ListView>
+                            </Grid>
+                        </Grid>
+                        <Grid Grid.Row="1">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="334*"/>
+                                <ColumnDefinition Width="331*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="46*"/>
+                                <RowDefinition Height="201*"/>
+                            </Grid.RowDefinitions>
+                            <Grid>
+                                <materialDesign:PackIcon Kind="Plus" Height="30" Margin="5" Width="30" VerticalAlignment="Center" HorizontalAlignment="Right" RenderTransformOrigin="0.667,0.667"/>
+                                <Button HorizontalAlignment="Right" Width="235" FontSize="20" Content="ADD CLASSES" Style="{DynamicResource MaterialDesignFlatButton}" Padding="0,5" Height="Auto"
+                                        Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}" 
+                                        CommandTarget="{Binding ElementName=AddLevel}"/>
+                            </Grid>
+                            <Grid Grid.Column="1">
+                                <materialDesign:PackIcon Kind="Plus" Height="30" Margin="5" Width="30" VerticalAlignment="Center" HorizontalAlignment="Right" RenderTransformOrigin="0.667,0.667"/>
+                                <Button HorizontalAlignment="Right" Width="235" FontSize="20" Content="ADD STREAMS" Style="{DynamicResource MaterialDesignFlatButton}" Padding="0,5" Height="Auto"
+                                        Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}" 
+                                        CommandTarget="{Binding ElementName=AddBlock}"/>
+                            </Grid>
+                            <Grid Grid.Row="1" >
+                                <Rectangle Margin="10" Fill="#FFF4F4F5" RadiusY="20" RadiusX="20">
+                                    <Rectangle.Effect>
+                                        <DropShadowEffect Color="#FF6176D4"/>
+                                    </Rectangle.Effect>
+                                </Rectangle>
+                                <ListView x:Name="classeslist" Margin="15">
+                                    <ListView.View>
+                                        <GridView>
+                                            <GridViewColumn/>
+                                        </GridView>
+                                    </ListView.View>
+                                    <ListViewItem Content="List View Item" Margin="5" FontSize="15" Width="auto"/>
+                                    <ListViewItem Content="List View Item" Margin="5" FontSize="15" Width="auto"/>
+                                </ListView>
+                            </Grid>
+                            <Grid Grid.Column="1" Grid.Row="1">
+                                <Rectangle Margin="10" Fill="#FFF4F4F5" RadiusY="20" RadiusX="20">
+                                    <Rectangle.Effect>
+                                        <DropShadowEffect Color="#FF6176D4"/>
+                                    </Rectangle.Effect>
+                                </Rectangle>
+                                <ListView x:Name="streamslist" Margin="15">
+                                    <ListView.View>
+                                        <GridView>
+                                            <GridViewColumn/>
+                                        </GridView>
+                                    </ListView.View>
+                                    <ListViewItem Content="List View Item" Margin="5" FontSize="15" Width="auto"/>
+                                    <ListViewItem Content="List View Item" Margin="5" FontSize="15" Width="auto"/>
+                                </ListView>
+                            </Grid>
+                        </Grid>
+                    </Grid>
+                </Grid>
+            </Grid>
+
+        </Grid>
+
+    </Grid>
+
+</UserControl>

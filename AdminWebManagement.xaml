@@ -1,0 +1,184 @@
+﻿<UserControl x:Class="NSMSoftware.AdminWebManagement"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:NSMSoftware"
+             mc:Ignorable="d" 
+            xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+
+            TextElement.FontWeight="Regular"
+            TextElement.FontSize="13"
+            TextOptions.TextFormattingMode="Ideal"
+            TextOptions.TextRenderingMode="Auto"
+            FontFamily="{DynamicResource MaterialDesignFont}" MinWidth="980" MinHeight="660">
+
+    <Grid Background="White">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="15*"/>
+            <RowDefinition Height="218*"/>
+        </Grid.RowDefinitions>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="163*"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock x:Name="schoolid"/>
+            <Button VerticalAlignment="Top" FontWeight="Bold" FontSize="20" HorizontalAlignment="left" Content="VEW NOTICE BOARD" Margin="10,2,5,0" Padding="5" Height="auto" 
+                    Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}" 
+                CommandTarget="{Binding ElementName=NoticeBoard}" />
+            <Button VerticalAlignment="Top" FontWeight="Bold" FontSize="20" HorizontalAlignment="Right" Content="ADD" Margin="10,2,5,0" Padding="5" Height="auto"  />
+
+            <materialDesign:DialogHost IsOpen="False" x:Name="NoticeBoard">
+                <materialDesign:DialogHost.DialogContent>
+                    <StackPanel Margin="10" Width="600"  Background="Aquamarine" >
+                        <materialDesign:PackIcon Margin="0, 20, 0, 0" Foreground="Green" Kind="Eventbrite" Width="100" Height="100" VerticalAlignment="Center"  HorizontalAlignment="Center"/>
+                        <ScrollViewer Height="500" VerticalScrollBarVisibility="Hidden">
+                            <StackPanel>
+                                <materialDesign:Card Margin="0, 2, 0, 0">
+                                    <StackPanel Margin="5" x:Name="justB">
+                                        <TextBlock  Text="just barely" FontSize="20" FontWeight="Bold" Margin="10, 10, 0, 0"/>
+                                        <TextBlock Text="There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration." FontSize="18"  Margin="10, 10, 0, 0" TextWrapping="Wrap"/>
+                                        <TextBlock Text="12th June 2018" FontSize="18" FontWeight="Bold" Margin="10, 10, 0, 0"/>
+                                        <Button Content="ACTIONS" />
+                                    </StackPanel>
+                                </materialDesign:Card>
+                                <ListView Margin="10" FontSize="16" x:Name="NoticeBoardList" >
+                                    <ListView.View>
+                                        <GridView>
+                                            <GridViewColumn/>
+                                        </GridView>
+                                    </ListView.View>
+                                    <ListViewItem Content="CLASSES" FontWeight="Bold" HorizontalAlignment="Center"/>
+                                </ListView>
+                            </StackPanel>
+                        </ScrollViewer>
+
+                        <Button Padding="0,5" Width="250" Height="50" Content="CLOSE" Background="red" Margin="0, 10, 0, 0" FontSize="24" Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}" CommandTarget="{Binding ElementName=NoticeBoard}" Style="{DynamicResource MaterialDesignFlatButton}" />
+                    </StackPanel>
+                </materialDesign:DialogHost.DialogContent>
+            </materialDesign:DialogHost>
+        </Grid>
+        <Grid Grid.Row="1" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="577*"/>
+            </Grid.ColumnDefinitions>
+         
+            <materialDesign:DialogHost IsOpen="False" x:Name="SuccessAlert">
+                <materialDesign:DialogHost.DialogContent>
+                    <StackPanel  Width="500" Height="auto" Background="GreenYellow">
+                        <materialDesign:PackIcon Margin="0, 20, 0, 0" Foreground="White" Kind="Calendar" Width="100" Height="100" VerticalAlignment="Center"  HorizontalAlignment="Center"/>
+
+                        <TextBlock Padding="0,5" x:Name="LoginAlertTitle" Text="ALERT" FontWeight="Bold" FontSize="36" TextAlignment="Center" />
+                        <Button Padding="0,5" Width="250" Height="50" Content="CLOSE ALERT" Margin="0, 10, 0, 0" FontSize="24" Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}" CommandTarget="{Binding ElementName=SuccessAlert}" Style="{DynamicResource MaterialDesignFlatButton}" />
+
+                    </StackPanel>
+                </materialDesign:DialogHost.DialogContent>
+            </materialDesign:DialogHost>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="90*"/>
+                        <ColumnDefinition Width="90*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="302*"/>
+                            <RowDefinition Height="41*"/>
+                            <RowDefinition Height="275*"/>
+                        </Grid.RowDefinitions>
+                        <Grid>
+                            <Rectangle Fill="#FFF4F4F5" Margin="5" RadiusY="10" RadiusX="10">
+                                <Rectangle.Effect>
+                                    <DropShadowEffect Color="#FF6176D4"/>
+                                </Rectangle.Effect>
+                            </Rectangle>
+                            <ScrollViewer VerticalScrollBarVisibility="Hidden">
+                                <StackPanel Margin="20" Width="500" Height="auto">
+                                    <TextBox Padding="0,5" x:Name="alert" materialDesign:HintAssist.Hint="CREATE ALERT" Style="{DynamicResource MaterialDesignFloatingHintTextBox}" Margin="0, 10" FontSize="15"/>
+                                    <ComboBox  Padding="0,5" x:Name="alert_target" materialDesign:HintAssist.Hint="SELECT TARGET"  Margin="0, 10" FontSize="15">
+                                        <ComboBoxItem Content="Student" HorizontalAlignment="Left" Width="498"/>
+                                        <ComboBoxItem Content="Staff" HorizontalAlignment="Left" Width="498" />
+                                        <ComboBoxItem Content="Finance" HorizontalAlignment="Left" Width="498" />
+                                        <ComboBoxItem Content="Academics" HorizontalAlignment="Left" Width="498" />
+                                    </ComboBox>
+                                    <TextBox Padding="0,5" x:Name="alert_info" materialDesign:HintAssist.Hint="ENTER ALERT INFO" Style="{DynamicResource MaterialDesignFloatingHintTextBox}" Margin="0, 5" FontSize="15" TextWrapping="Wrap" MinLines="3"/>
+                                    <Button  VerticalAlignment="Bottom" HorizontalAlignment="Center" Content="CREATE NEW ALERT" x:Name="CreateAlert" Click="CreateAlert_Click"/>
+                                </StackPanel>
+                            </ScrollViewer>
+                        </Grid>
+                        <Grid Grid.Row="2">
+                            <Rectangle Fill="#FFF4F4F5" Margin="5" RadiusY="10" RadiusX="10">
+                                <Rectangle.Effect>
+                                    <DropShadowEffect Color="#FF6176D4"/>
+                                </Rectangle.Effect>
+                            </Rectangle>
+                            <ScrollViewer VerticalScrollBarVisibility="Hidden">
+                                <StackPanel Margin="20" Width="500" Height="auto">
+                                <TextBlock Text="NOTICE BOARD" FontSize="25" FontWeight="bold" HorizontalAlignment="Center"/>
+                                <TextBox Padding="0,5" x:Name="noticetitle" materialDesign:HintAssist.Hint="NOTICE TITLE" Style="{DynamicResource MaterialDesignFloatingHintTextBox}" Margin="0, 10" FontSize="15"/>
+                                <TextBox Padding="0,5" x:Name="noticemessage" materialDesign:HintAssist.Hint="NOTICE MESSAGE" Style="{DynamicResource MaterialDesignFloatingHintTextBox}" Margin="0, 5" FontSize="15" TextWrapping="Wrap" MinLines="3"/>
+                                <Button x:Name="PostNotice" Click="PostNotice_Click" VerticalAlignment="Bottom" HorizontalAlignment="Center" Content="CREATE NEW RECORD"/>
+                                </StackPanel>
+                            </ScrollViewer>
+                        </Grid>
+                        <Grid Grid.Row="1">
+                            <Rectangle Fill="#FFF4F4F5" Margin="5" RadiusY="10" RadiusX="10">
+                                <Rectangle.Effect>
+                                    <DropShadowEffect Color="#FF6176D4"/>
+                                </Rectangle.Effect>
+                            </Rectangle>
+                        <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" Text="Some text"/>
+                    </Grid>
+                    </Grid>
+                    <Grid Grid.Column="1">
+                    <Rectangle Fill="#FFF4F4F5" Margin="5" RadiusY="10" RadiusX="10">
+                            <Rectangle.Effect>
+                                <DropShadowEffect Color="#FF6176D4"/>
+                            </Rectangle.Effect>
+                        </Rectangle>
+                        <StackPanel  Background="Aquamarine" Margin="10">
+                            <materialDesign:PackIcon Margin="0, 20, 0, 0" Foreground="Green" Kind="Eventbrite" Width="100" Height="100" VerticalAlignment="Center"  HorizontalAlignment="Center"/>
+                            <ScrollViewer Height="500" VerticalScrollBarVisibility="Hidden">
+                                <StackPanel>
+                                    <materialDesign:Card Margin="0, 2, 0, 0">
+                                        <StackPanel Margin="5">
+                                            <TextBlock Text="just barely" FontSize="20" FontWeight="Bold" Margin="10, 10, 0, 0"/>
+                                            <TextBlock Text="There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration." FontSize="18"  Margin="10, 10, 0, 0" TextWrapping="Wrap"/>
+                                            <TextBlock Text="12th June 2018" FontSize="18" FontWeight="Bold" Margin="10, 10, 0, 0"/>
+                                            <Button Content="ACTIONS" />
+                                        </StackPanel>
+                                    </materialDesign:Card>
+                                    <materialDesign:Card Margin="0, 2, 0, 0">
+                                        <StackPanel Margin="5">
+                                            <TextBlock Text="just barely" FontSize="20" FontWeight="Bold" Margin="10, 10, 0, 0"/>
+                                            <TextBlock Text="There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration." FontSize="18"  Margin="10, 10, 0, 0" TextWrapping="Wrap"/>
+                                            <TextBlock Text="12th June 2018" FontSize="18" FontWeight="Bold" Margin="10, 10, 0, 0"/>
+                                            <Button Content="ACTIONS" />
+                                        </StackPanel>
+                                    </materialDesign:Card>
+                                    <materialDesign:Card Margin="0, 2, 0, 0">
+                                        <StackPanel Margin="5">
+                                            <TextBlock Text="just barely" FontSize="20" FontWeight="Bold" Margin="10, 10, 0, 0"/>
+                                            <TextBlock Text="There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration." FontSize="18"  Margin="10, 10, 0, 0" TextWrapping="Wrap"/>
+                                            <TextBlock Text="12th June 2018" FontSize="18" FontWeight="Bold" Margin="10, 10, 0, 0"/>
+                                            <Button Content="ACTIONS" />
+                                        </StackPanel>
+                                    </materialDesign:Card>
+                                    <materialDesign:Card Margin="0, 2, 0, 0">
+                                        <StackPanel Margin="5">
+                                            <TextBlock Text="just barely" FontSize="20" FontWeight="Bold" Margin="10, 10, 0, 0"/>
+                                            <TextBlock Text="There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration." FontSize="18"  Margin="10, 10, 0, 0" TextWrapping="Wrap"/>
+                                            <TextBlock Text="12th June 2018" FontSize="18" FontWeight="Bold" Margin="10, 10, 0, 0"/>
+                                            <Button Content="ACTIONS" />
+                                        </StackPanel>
+                                    </materialDesign:Card>
+                                </StackPanel>
+                            </ScrollViewer>
+                        </StackPanel>
+                    </Grid>
+                </Grid>
+            
+        </Grid>
+
+    </Grid>
+</UserControl>

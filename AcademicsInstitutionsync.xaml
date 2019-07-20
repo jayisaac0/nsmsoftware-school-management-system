@@ -1,0 +1,191 @@
+﻿<UserControl x:Class="NSMSoftware.AcademicsInstitutionsync"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:NSMSoftware"
+             mc:Ignorable="d" 
+
+            xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+
+            TextElement.FontWeight="Regular"
+            TextElement.FontSize="13"
+            TextOptions.TextFormattingMode="Ideal"
+            TextOptions.TextRenderingMode="Auto"
+            FontFamily="{DynamicResource MaterialDesignFont}" MinWidth="980" MinHeight="660">
+
+
+    <Grid Background="White">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="15*"/>
+            <RowDefinition Height="218*"/>
+        </Grid.RowDefinitions>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="163*"/>
+            </Grid.ColumnDefinitions>
+
+
+        </Grid>
+        <Grid Grid.Row="1" Background="White">
+            <materialDesign:DialogHost IsOpen="False" x:Name="SuccessAlert">
+                <materialDesign:DialogHost.DialogContent>
+                    <StackPanel  Width="500" Height="auto" Background="GreenYellow">
+                        <materialDesign:PackIcon Margin="0, 20, 0, 0" Foreground="White" Kind="MarkerCheck" Width="100" Height="100" VerticalAlignment="Center"  HorizontalAlignment="Center"/>
+
+                        <TextBlock Padding="0,5" x:Name="LoginAlertTitle" Text="ALERT" FontWeight="Bold" FontSize="36" TextAlignment="Center" />
+                        <Button Padding="0,5" Width="250" Height="50" Content="CLOSE ALERT" Margin="0, 10, 0, 0" FontSize="24" Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}" CommandTarget="{Binding ElementName=SuccessAlert}" Style="{DynamicResource MaterialDesignFlatButton}" />
+
+                    </StackPanel>
+                </materialDesign:DialogHost.DialogContent>
+            </materialDesign:DialogHost>
+
+            <TextBlock x:Name="schoolid"/>
+            <TextBlock x:Name="administratorid"/>
+            <Grid Background="White">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="743*"/>
+                </Grid.ColumnDefinitions>
+
+                <Grid Background="White">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="15*"/>
+                        <RowDefinition Height="203*"/>
+                    </Grid.RowDefinitions>
+                    <Grid Background="#FFFBF9F9">
+                        <TextBox Width="300" HorizontalAlignment="Left" FontSize="20"  Margin="10,0,0,0" materialDesign:HintAssist.Hint="SEARCH..." Style="{DynamicResource MaterialDesignFloatingHintTextBox}"  />
+
+                    </Grid>
+                    <Grid Grid.Row="1" Background="White">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="361*"/>
+                            <ColumnDefinition Width="129*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid >
+
+                        </Grid>
+                        <Grid Grid.Column="1">
+
+
+
+
+                        </Grid>
+                        <Grid >
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="212*"/>
+                                <RowDefinition Height="361*"/>
+                            </Grid.RowDefinitions>
+                            <Grid >
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="357*"/>
+                                    <ColumnDefinition Width="365*"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid>
+                                    <Rectangle Fill="#FFF4F4F5" Margin="5" RadiusY="10" RadiusX="10" Grid.RowSpan="2" RenderTransformOrigin="0.492,0.418">
+                                        <Rectangle.Effect>
+                                            <DropShadowEffect Color="#FF6176D4"/>
+                                        </Rectangle.Effect>
+                                    </Rectangle>
+                                    <Grid Grid.Row="2" Margin="15">
+                                        <ListView x:Name="InstitutionList" SelectionChanged="InstitutionList_SelectionChanged">
+                                            <ListView.View>
+                                                <GridView>
+                                                    <GridViewColumn/>
+                                                </GridView>
+                                            </ListView.View>
+                                            <ListViewItem Content="ListViewItem"/>
+                                        </ListView>
+                                    </Grid>
+                                </Grid>
+                                <Grid Grid.Column="1">
+                                    <Rectangle Fill="#FFF4F4F5" Margin="5" RadiusY="10" RadiusX="10" Grid.RowSpan="2" RenderTransformOrigin="0.492,0.418">
+                                        <Rectangle.Effect>
+                                            <DropShadowEffect Color="#FF6176D4"/>
+                                        </Rectangle.Effect>
+                                    </Rectangle>
+                                    <TextBlock Text="MENU" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,10,50,0" FontSize="20" FontWeight="Bold" />
+                                    <materialDesign:PopupBox HorizontalAlignment="Right" VerticalAlignment="Top" Foreground="Black" Margin="10" PlacementMode="BottomAndAlignRightEdges" StaysOpen="False"  FontSize="20">
+                                        <StackPanel Width="200">
+                                            <Button x:Name="MakeRequest" Click="MakeRequest_Click" Content="Request sync" />
+                                            <Button Content="Management" />
+                                        </StackPanel>
+                                    </materialDesign:PopupBox>
+                                    <StackPanel Margin="15" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                        <materialDesign:PackIcon Kind="School" Height="100" Width="100" HorizontalAlignment="Center"/>
+                                        <TextBlock x:Name="institution" Text="Institution" FontWeight="Bold" FontSize="20" HorizontalAlignment="Center"/>
+                                    </StackPanel>
+
+                                </Grid>
+                            </Grid>
+                            <Grid Grid.Row="1" >
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="49*"/>
+                                    <RowDefinition Height="312*"/>
+                                </Grid.RowDefinitions>
+                                <Grid>
+                                    <TextBlock FontSize="20" Text="Sync requests" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="10,0,0,0"/>
+                                    <TextBlock FontSize="20" Text="Approved Sync requests" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,10,0"/>
+                                </Grid>
+                                <Grid Grid.Row="1" >
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="367*"/>
+                                        <ColumnDefinition Width="355*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Grid>
+                                        <Rectangle Fill="#FFF4F4F5" Margin="5" RadiusY="10" RadiusX="10" Grid.RowSpan="2" RenderTransformOrigin="0.492,0.418">
+                                            <Rectangle.Effect>
+                                                <DropShadowEffect Color="#FF6176D4"/>
+                                            </Rectangle.Effect>
+                                        </Rectangle>
+                                        <DataGrid Margin="15" Background="White" x:Name="InstitutionSyncRequests"/>
+                                    </Grid>
+                                    <Grid Grid.Column="1">
+                                        <Rectangle Fill="#FFF4F4F5" Margin="5" RadiusY="10" RadiusX="10" Grid.RowSpan="2" RenderTransformOrigin="0.492,0.418">
+                                            <Rectangle.Effect>
+                                                <DropShadowEffect Color="#FF6176D4"/>
+                                            </Rectangle.Effect>
+                                        </Rectangle>
+                                        <ListView Margin="15" Background="White" x:Name="ApprovedSyncRequests">
+                                            <ListView.View>
+                                                <GridView>
+                                                    <GridViewColumn/>
+                                                </GridView>
+                                            </ListView.View>
+                                        </ListView>
+
+                                    </Grid>
+                                </Grid>
+                            </Grid>
+                        </Grid>
+                        <Grid Grid.Column="1">
+                            <Rectangle Fill="#FFF4F4F5" Margin="5" RadiusY="10" RadiusX="10" Grid.RowSpan="2" RenderTransformOrigin="0.492,0.418">
+                                <Rectangle.Effect>
+                                    <DropShadowEffect Color="#FF6176D4"/>
+                                </Rectangle.Effect>
+                            </Rectangle>
+                            <StackPanel>
+                                <DataGrid Margin="15" Background="White" x:Name="CurrentInstitutionSyncRequests" SelectionChanged="CurrentInstitutionSyncRequests_SelectionChanged"/>
+                                <TextBlock Margin="0,0,0,0" HorizontalAlignment="Right">
+                                    <materialDesign:PopupBox HorizontalAlignment="Right" Foreground="Black" Margin="10" PlacementMode="BottomAndAlignRightEdges" StaysOpen="False"  FontSize="20">
+                                        <StackPanel Width="200">
+                                            <Button  Content="Approve request" />
+                                            <Button Content="Management" />
+                                        </StackPanel>
+                                    </materialDesign:PopupBox>
+                                </TextBlock>
+                                <materialDesign:PackIcon Kind="School" Height="100" Width="100" HorizontalAlignment="Center"/>
+                                <TextBlock x:Name="institutionname" Margin="0,20,0,0" Text="Institution" TextWrapping="Wrap" FontWeight="Bold" FontSize="20" HorizontalAlignment="Center"/>
+                                <TextBlock Margin="15,15,15,0" FontWeight="Bold" Text="Approved institutions" HorizontalAlignment="Center"/>
+                                <DataGrid Margin="15,0,15,0" Background="White" x:Name="CurrentInstitutionApprovedSyncRequests"/>
+                            </StackPanel>
+                        </Grid>
+
+                    </Grid>
+                </Grid>
+            </Grid>
+
+        </Grid>
+
+    </Grid>
+
+</UserControl>

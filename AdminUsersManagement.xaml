@@ -1,0 +1,140 @@
+﻿<UserControl x:Class="NSMSoftware.AdminUsersManagement"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:NSMSoftware"
+             mc:Ignorable="d" 
+             
+            xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+
+            TextElement.FontWeight="Regular"
+            TextElement.FontSize="13"
+            TextOptions.TextFormattingMode="Ideal"
+            TextOptions.TextRenderingMode="Auto"
+            FontFamily="{DynamicResource MaterialDesignFont}" MinWidth="980" MinHeight="660">
+
+    <Grid Background="White">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="15*"/>
+            <RowDefinition Height="218*"/>
+        </Grid.RowDefinitions>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="163*"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock x:Name="schoolid" />
+            <materialDesign:PackIcon Kind="Plus" Height="30" Margin="5" Width="30" HorizontalAlignment="Right" RenderTransformOrigin="0.667,0.667"/>
+            <Button HorizontalAlignment="Right" Width="235" FontSize="20" Content="ADD" Style="{DynamicResource MaterialDesignFlatButton}" Padding="0,5" Height="Auto"/>
+
+
+        </Grid>
+        <Grid Grid.Row="1" Background="White">
+            
+            <Grid Background="White">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="758"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Column="1" Background="#FFE0DEDE">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="15*"/>
+                        <RowDefinition Height="203*"/>
+                    </Grid.RowDefinitions>
+                    <Grid Background="#FFA42929">
+                        <StackPanel VerticalAlignment="center" Orientation="Horizontal" HorizontalAlignment="Right">
+                            <TextBlock Text="ACTIONS" VerticalAlignment="Center" FontSize="20" FontWeight="Bold" />
+                            <materialDesign:PopupBox Margin="10" PlacementMode="BottomAndAlignRightEdges" StaysOpen="False" Foreground="White" FontSize="20">
+
+                                <ListView Width="200">
+                                    <ListViewItem>
+                                        <StackPanel Orientation="Horizontal">
+                                            <materialDesign:PackIcon Foreground="green" Kind="pen" Width="25" Height="25" VerticalAlignment="Center" />
+                                            <TextBlock HorizontalAlignment="Center" Text="Edit" Margin="5" FontSize="15" />
+                                        </StackPanel>
+                                    </ListViewItem>
+                                    <ListViewItem>
+                                        <StackPanel Orientation="Horizontal">
+                                            <materialDesign:PackIcon Foreground="red" Kind="Delete" Width="25" Height="25" VerticalAlignment="Center" />
+                                            <TextBlock HorizontalAlignment="Center" Text="Delete" Margin="5" FontSize="15" />
+                                        </StackPanel>
+                                    </ListViewItem>
+                                </ListView>
+
+
+                            </materialDesign:PopupBox>
+                        </StackPanel>
+                    </Grid>
+                    <Grid Grid.Row="1" Background="#FFFBFBFB">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="7*"/>
+                            <RowDefinition Height="12*"/>
+                        </Grid.RowDefinitions>
+                        <Grid Background="White">
+                            <Rectangle Margin="10" Fill="#FFF4F4F5" RadiusY="20" RadiusX="20">
+                                <Rectangle.Effect>
+                                    <DropShadowEffect Color="#FF6176D4"/>
+                                </Rectangle.Effect>
+
+                            </Rectangle>
+                            <Image HorizontalAlignment="Left" Margin="15" Width="295" Source="Assets/logo.png"/>
+                        </Grid>
+                        <Grid Grid.Row="1" Background="White">
+                            <Rectangle Fill="#FFF4F4F5" Margin="10" RadiusY="20" RadiusX="20">
+                                <Rectangle.Effect>
+                                    <DropShadowEffect Color="#FF6176D4"/>
+                                </Rectangle.Effect>
+
+                            </Rectangle>
+                            <ListView Margin="15">
+                                <ListView.View>
+                                    <GridView>
+                                        <GridViewColumn/>
+                                    </GridView>
+                                </ListView.View>
+                                <ListViewItem Content="SESSION NAME" Margin="5" FontSize="15" Width="auto"/>
+                                <ListViewItem Content="Session start" Margin="5" FontSize="15" Width="auto"/>
+                                <Button HorizontalAlignment="Right" FontSize="20" Content="ADD SESSION" Style="{DynamicResource MaterialDesignFlatButton}" Padding="0,5" Height="Auto"
+                                            Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}" 
+                                            CommandTarget="{Binding ElementName=CreateSessionStartDate}"/>
+                                <ListViewItem Content="Session end" Margin="5" FontSize="15" Width="auto"/>
+                                <Button HorizontalAlignment="Right" FontSize="20" Content="ADD SESSION" Style="{DynamicResource MaterialDesignFlatButton}" Padding="0,5" Height="Auto"
+                                            Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}" 
+                                            CommandTarget="{Binding ElementName=CreateSessionEndDate}"/>
+                                <ListViewItem Content="List View Item" Margin="5" FontSize="15" Width="auto"/>
+                                <ListViewItem Content="List View Item" Margin="5" FontSize="15" Width="auto"/>
+                                <ListViewItem Content="List View Item" Margin="5" FontSize="15" Width="auto"/>
+                            </ListView>
+                        </Grid>
+                    </Grid>
+
+                </Grid>
+                <Grid Background="White">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="15*"/>
+                        <RowDefinition Height="203*"/>
+                    </Grid.RowDefinitions>
+                    <Grid Background="#FFFBF9F9">
+                        <TextBox Width="400" FontSize="20"  materialDesign:HintAssist.Hint="SEARCH..." Style="{DynamicResource MaterialDesignFloatingHintTextBox}"  />
+                    </Grid>
+                    <Grid Grid.Row="1" Background="White" Margin="10">
+                        <Rectangle Fill="#FFF4F4F5" RadiusY="20" RadiusX="20">
+                            <Rectangle.Effect>
+                                <DropShadowEffect Color="#FF6176D4"/>
+                            </Rectangle.Effect>
+
+                        </Rectangle>
+                        <DataGrid x:Name="CompleteUserDetailGrid" FontSize="15" Margin="10">
+                            <DataGrid.Columns>
+                                <DataGridCheckBoxColumn/>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </Grid>
+                </Grid>
+            </Grid>
+
+        </Grid>
+
+    </Grid>
+
+</UserControl>

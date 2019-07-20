@@ -1,0 +1,149 @@
+﻿<UserControl x:Class="NSMSoftware.LibraryCompleteBookList"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:NSMSoftware"
+             mc:Ignorable="d" 
+             
+            xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+
+            TextElement.FontWeight="Regular"
+            TextElement.FontSize="13"
+            TextOptions.TextFormattingMode="Ideal"
+            TextOptions.TextRenderingMode="Auto"
+            FontFamily="{DynamicResource MaterialDesignFont}" MinWidth="980" MinHeight="660">
+
+    <Grid Background="White">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="15*"/>
+            <RowDefinition Height="218*"/>
+        </Grid.RowDefinitions>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="163*"/>
+            </Grid.ColumnDefinitions>
+
+
+        </Grid>
+        <TextBlock x:Name="schoolid"/>
+        <TextBlock x:Name="administratorid"/>
+        <Grid Grid.Row="1" Background="White">
+            <materialDesign:DialogHost IsOpen="False" x:Name="SuccessAlert">
+                <materialDesign:DialogHost.DialogContent>
+                    <StackPanel  Width="500" Height="auto" Background="GreenYellow">
+                        <materialDesign:PackIcon Margin="0, 20, 0, 0" Foreground="Red" Kind="Book" Width="100" Height="100" VerticalAlignment="Center"  HorizontalAlignment="Center"/>
+
+                        <TextBlock Padding="0,5" x:Name="LoginAlertTitle" Text="SORRY ACCESS DENIED" FontWeight="Bold" FontSize="36" TextAlignment="Center" />
+                        <Button Padding="0,5" Width="250" Height="50" Content="CLOSE ALERT" Margin="0, 10, 0, 0" FontSize="24" Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}" CommandTarget="{Binding ElementName=SuccessAlert}" Style="{DynamicResource MaterialDesignFlatButton}" />
+
+                    </StackPanel>
+                </materialDesign:DialogHost.DialogContent>
+            </materialDesign:DialogHost>
+            <Grid Background="White">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="19*"/>
+                    <ColumnDefinition Width="9*"/>
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Column="1" Background="#FFE0DEDE">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="15*"/>
+                        <RowDefinition Height="203*"/>
+                    </Grid.RowDefinitions>
+                    <Grid Background="#FFA42929">
+                        <StackPanel VerticalAlignment="center" Orientation="Horizontal" HorizontalAlignment="Right">
+                            <TextBlock Text="STATUS" VerticalAlignment="Center" FontSize="20" FontWeight="Bold" />
+                            <materialDesign:PopupBox Margin="10" PlacementMode="BottomAndAlignRightEdges" StaysOpen="False" Foreground="White" FontSize="20">
+
+                                <ListView Width="200">
+                                    <ListViewItem x:Name="BookDamaged" Selected="BookDamaged_Selected">
+                                        <StackPanel Orientation="Horizontal">
+                                            <materialDesign:PackIcon Foreground="yellow" Kind="pen" Width="25" Height="25" VerticalAlignment="Center" />
+                                            <TextBlock HorizontalAlignment="Center" Text="Damaged" Margin="5" FontSize="15" />
+                                        </StackPanel>
+                                    </ListViewItem>
+                                    <ListViewItem x:Name="BookLost" Selected="BookLost_Selected">
+                                        <StackPanel Orientation="Horizontal">
+                                            <materialDesign:PackIcon Foreground="red" Kind="DeleteForever" Width="25" Height="25" VerticalAlignment="Center" />
+                                            <TextBlock HorizontalAlignment="Center" Text="Lost" Margin="5" FontSize="15" />
+                                        </StackPanel>
+                                    </ListViewItem>
+                                </ListView>
+
+
+                            </materialDesign:PopupBox>
+                        </StackPanel>
+                    </Grid>
+                    <Grid Grid.Row="1" Background="#FFFBFBFB">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="191*"/>
+                            <RowDefinition Height="322*"/>
+                            <RowDefinition Height="60*"/>
+                        </Grid.RowDefinitions>
+                        <Grid Background="White">
+                            <Rectangle Fill="#FFF4F4F5" RadiusY="20" RadiusX="20" Margin="5">
+                                <Rectangle.Effect>
+                                    <DropShadowEffect Color="#FF6176D4"/>
+                                </Rectangle.Effect>
+
+                            </Rectangle>
+                            <Image HorizontalAlignment="Left" Margin="10,0,0,0" Width="295" Source="Assets/logo.png"/>
+                        </Grid>
+                        <Grid Grid.Row="1" Background="White">
+                            <Rectangle Fill="#FFF4F4F5" RadiusY="20" RadiusX="20" Margin="5">
+                                <Rectangle.Effect>
+                                    <DropShadowEffect Color="#FF6176D4"/>
+                                </Rectangle.Effect>
+
+                            </Rectangle>
+                            <ScrollViewer VerticalScrollBarVisibility="Hidden">
+                                <StackPanel Margin="20"  Height="auto">
+                                    <TextBlock x:Name="bookid" Text="Book id" Padding="0,5" Margin="0, 5" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="18"/>
+                                    <TextBlock x:Name="booktitle" Text="Book title" Padding="0,5" Margin="0, 5" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="18"/>
+                                    <TextBlock x:Name="bookwriter" Text="Book writter" Padding="0,5" Margin="0, 5"  VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="18"/>
+                                    <TextBlock x:Name="bookpublisher" Text="Book publisher" Padding="0,5" Margin="0, 5" VerticalAlignment="Center" HorizontalAlignment="Center"  FontSize="18"/>
+                                    <TextBlock x:Name="datepublished" Text="Date published" Padding="0,5" Margin="0, 5" VerticalAlignment="Center" HorizontalAlignment="Center"  FontSize="18"/>
+                                    <TextBlock x:Name="bookcategories" Text="Book category" Padding="0,5" Margin="0, 5" VerticalAlignment="Center" HorizontalAlignment="Center"  FontSize="18"/>
+                                    <TextBlock x:Name="booksubcategories" Text="Book sub-category" Padding="0,5" Margin="0, 5" VerticalAlignment="Center" HorizontalAlignment="Center"  FontSize="18"/>
+                                    <TextBlock x:Name="error" Padding="0,5" Margin="0, 5" VerticalAlignment="Center" HorizontalAlignment="Center"  FontSize="18"/>
+
+                                </StackPanel>
+                            </ScrollViewer>
+                        </Grid>
+                        <Grid Grid.Row="2" Background="White">
+                            <Rectangle Fill="#FFF4F4F5" RadiusY="20" RadiusX="20" Margin="5">
+                                <Rectangle.Effect>
+                                    <DropShadowEffect Color="#FF6176D4"/>
+                                </Rectangle.Effect>
+
+                            </Rectangle>
+                            <TextBlock  x:Name="bookstatus" FontSize="25"  Text="Book Status"  TextAlignment="Center" Margin="5" FontWeight="Bold"  Padding="5"/>
+                        </Grid>
+                    </Grid>
+
+                </Grid>
+                <Grid Background="White">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="15*"/>
+                        <RowDefinition Height="203*"/>
+                    </Grid.RowDefinitions>
+                    <Grid Background="#FFFBF9F9">
+                        <TextBox Width="400" FontSize="20"  materialDesign:HintAssist.Hint="SEARCH..." Style="{DynamicResource MaterialDesignFloatingHintTextBox}"  />
+                    </Grid>
+                    <Grid Grid.Row="1" Background="White">
+                        <Rectangle Fill="#FFF4F4F5" RadiusY="20" RadiusX="20" Margin="5">
+                            <Rectangle.Effect>
+                                <DropShadowEffect Color="#FF6176D4"/>
+                            </Rectangle.Effect>
+
+                        </Rectangle>
+                        <DataGrid x:Name="BookList" Margin="15"  SelectionChanged="BookList_SelectionChanged"/>
+                    </Grid>
+                </Grid>
+            </Grid>
+
+        </Grid>
+
+    </Grid>
+
+</UserControl>

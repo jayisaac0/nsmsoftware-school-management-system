@@ -1,0 +1,197 @@
+﻿<UserControl x:Class="NSMSoftware.AdminSystemSession"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:NSMSoftware"
+             mc:Ignorable="d" 
+             
+            xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+
+            TextElement.FontWeight="Regular"
+            TextElement.FontSize="13"
+            TextOptions.TextFormattingMode="Ideal"
+            TextOptions.TextRenderingMode="Auto"
+            FontFamily="{DynamicResource MaterialDesignFont}" MinWidth="980" MinHeight="660">
+
+    <Grid Background="White">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="15*"/>
+            <RowDefinition Height="218*"/>
+        </Grid.RowDefinitions>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="163*"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Text="schilis" x:Name="schoolid"/>
+            <materialDesign:PackIcon Kind="Plus" Height="30" Margin="5" Width="30" HorizontalAlignment="Right" RenderTransformOrigin="0.667,0.667"/>
+            <Button HorizontalAlignment="Right" Width="235" FontSize="20" Content="ADD SESSION" Style="{DynamicResource MaterialDesignFlatButton}" Padding="0,5" Height="Auto"
+                    Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}" 
+                    CommandTarget="{Binding ElementName=CreateSession}"/>
+
+
+        </Grid>
+        <Grid Grid.Row="1" Background="White">
+            <materialDesign:DialogHost IsOpen="False" x:Name="SuccessAlert">
+                <materialDesign:DialogHost.DialogContent>
+                    <StackPanel  Width="500" Height="auto" Background="GreenYellow">
+                        <materialDesign:PackIcon Margin="0, 20, 0, 0" Foreground="White" Kind="MarkerCheck" Width="100" Height="100" VerticalAlignment="Center"  HorizontalAlignment="Center"/>
+
+                        <TextBlock Padding="0,5" x:Name="LoginAlertTitle" Text="SORRY ACCESS DENIED" FontWeight="Bold" FontSize="36" TextAlignment="Center" />
+                        <Button Padding="0,5" Width="250" Height="50" Content="CLOSE ALERT" Margin="0, 10, 0, 0" FontSize="24" Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}" CommandTarget="{Binding ElementName=SuccessAlert}" Style="{DynamicResource MaterialDesignFlatButton}" />
+
+                    </StackPanel>
+                </materialDesign:DialogHost.DialogContent>
+            </materialDesign:DialogHost>
+            <materialDesign:DialogHost IsOpen="False" x:Name="CreatenewSession">
+                <materialDesign:DialogHost.DialogContent>
+                    <StackPanel Margin="20" Width="500" Height="auto">
+                        <TextBox Padding="0,5" materialDesign:HintAssist.Hint="ENTER SESSION NAME" x:Name="txt_sessionName" Style="{DynamicResource MaterialDesignFloatingHintTextBox}" Margin="0, 10" FontSize="20"/>
+                        <TextBox Padding="0,5" materialDesign:HintAssist.Hint="ENTER SESSION START" x:Name="txt_sessionStart"  Style="{DynamicResource MaterialDesignFloatingHintTextBox}" Margin="0, 10" FontSize="20"/>
+                        <TextBox Padding="0,5" materialDesign:HintAssist.Hint="ENTER SESSION END" x:Name="txt_sessionEnd" Style="{DynamicResource MaterialDesignFloatingHintTextBox}" Margin="0, 10" FontSize="20"/>
+                        <DatePicker Margin="0, 40, 0, 0" materialDesign:HintAssist.Hint="ENTER SESSION START DATE" x:Name="txt_sessionStartDate" FontSize="20"/>
+                        <DatePicker Margin="0, 40, 0, 0" materialDesign:HintAssist.Hint="ENTER SESSION END DATE" x:Name="txt_sessionEndDate" FontSize="20"/>
+                        <Button Padding="0,5" Width="250" Height="50"  Content="CREATE SESSION"  x:Name="CreateSession" Click="CreateSession_Click"  Margin="0, 10, 0, 0" FontSize="24"  Style="{DynamicResource MaterialDesignFlatButton}"/>
+                        <Button Padding="0,5" Width="250" Height="50"  Content="CLOSE" Margin="0, 10, 0, 0" FontSize="24"
+                            Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}" 
+                            CommandTarget="{Binding ElementName=CreatenewSession}" 
+                            Style="{DynamicResource MaterialDesignFlatButton}" />
+
+                    </StackPanel>
+                </materialDesign:DialogHost.DialogContent>
+            </materialDesign:DialogHost>
+
+            <materialDesign:DialogHost IsOpen="False" x:Name="CreateSessionDate">
+                <materialDesign:DialogHost.DialogContent>
+                    <StackPanel Margin="20" Width="500" Height="auto">
+                        <materialDesign:PackIcon Kind="AccountEdit" Width="80" Height="80" VerticalAlignment="Center" HorizontalAlignment="Center" />
+                        <DatePicker Padding="0,5" materialDesign:HintAssist.Hint="Select session start date" Margin="0, 10" FontSize="20" />
+                        <DatePicker Padding="0,5" materialDesign:HintAssist.Hint="Select session end date" Margin="0, 10" FontSize="20" />
+                        <Button Padding="0,5" Width="250" Height="50"  Content="SET SESSION DATE" Margin="0, 10, 0, 0" FontSize="24"  
+                            Style="{DynamicResource MaterialDesignFlatButton}" />
+                        <Button Padding="0,5" Width="250" Height="50" Background="Red" Content="CLOSE" Margin="0, 10, 0, 0" FontSize="24"
+                            Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}" 
+                            CommandTarget="{Binding ElementName=CreateSessionDate}" 
+                            Style="{DynamicResource MaterialDesignFlatButton}" />
+
+                    </StackPanel>
+                </materialDesign:DialogHost.DialogContent>
+            </materialDesign:DialogHost>
+
+            <Grid Background="White">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="19*"/>
+                    <ColumnDefinition Width="9*"/>
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Column="1" Background="#FFE0DEDE">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="15*"/>
+                        <RowDefinition Height="203*"/>
+                    </Grid.RowDefinitions>
+                    <Grid Background="#FFA42929">
+                        <StackPanel VerticalAlignment="center" Orientation="Horizontal" HorizontalAlignment="Right">
+                            <TextBlock Text="ACTIONS" VerticalAlignment="Center" FontSize="20" FontWeight="Bold" />
+                            <materialDesign:PopupBox Margin="10" PlacementMode="BottomAndAlignRightEdges" StaysOpen="False" Foreground="White" FontSize="20">
+                                <StackPanel Width="200">
+                                    <Button x:Name="EditSessionDate" Click="EditSessionDate_Click" Content="EDIT SESSION DATES" Style="{DynamicResource MaterialDesignFlatButton}" Padding="0,5" Height="Auto"
+                                            Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}" 
+                                            CommandTarget="{Binding ElementName=CreateSessionDate}"/>
+                                </StackPanel>
+                                <!--<ListView Width="200">
+                                        <ListViewItem>
+                                            <StackPanel Orientation="Horizontal">
+                                                <materialDesign:PackIcon Foreground="green" Kind="pen" Width="25" Height="25" VerticalAlignment="Center" />
+                                                <TextBlock HorizontalAlignment="Center" Text="Edit" Margin="5" FontSize="15" />
+                                            </StackPanel>
+                                        </ListViewItem>
+                                        <ListViewItem>
+                                            <StackPanel Orientation="Horizontal">
+                                                <materialDesign:PackIcon Foreground="red" Kind="Delete" Width="25" Height="25" VerticalAlignment="Center" />
+                                                <TextBlock HorizontalAlignment="Center" Text="Delete" Margin="5" FontSize="15" />
+                                            </StackPanel>
+                                        </ListViewItem>
+                                    </ListView>-->
+
+
+                            </materialDesign:PopupBox>
+                        </StackPanel>
+                    </Grid>
+                    <Grid Grid.Row="1" Background="#FFFBFBFB">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="7*"/>
+                            <RowDefinition Height="12*"/>
+                        </Grid.RowDefinitions>
+                        <Grid Background="White">
+
+
+                            <Image HorizontalAlignment="Left" Margin="10,0,0,0" Width="295" Source="Assets/logo.png"/>
+                        </Grid>
+                        <Grid Grid.Row="1" Background="White">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="172*"/>
+                                <RowDefinition Height="189*"/>
+                            </Grid.RowDefinitions>
+                            <Grid>
+                                <Rectangle Margin="5" Fill="WhiteSmoke" RadiusY="10" Grid.Row="1"  Stroke="Black" StrokeThickness="0">
+                                    <Rectangle.Effect>
+                                        <DropShadowEffect ShadowDepth="2"/>
+                                    </Rectangle.Effect>
+                                </Rectangle>
+                                <StackPanel>
+                                    <TextBlock x:Name="system_institution_sessions_id" Text="Session id" FontSize="16"  HorizontalAlignment="Center" Margin="10, 10, 0, 0" />
+                                    <TextBlock x:Name="system_institution_registry_id" Text="" FontSize="16"  HorizontalAlignment="Center" Margin="10, 10, 0, 0" />
+                                    <TextBlock x:Name="sessionName" Text="Session name" FontSize="16"  HorizontalAlignment="Center" Margin="10, 10, 0, 0" />
+                                    <TextBlock x:Name="sessionStart" Text="Session start" FontSize="16"  HorizontalAlignment="Center" Margin="10, 10, 0, 0" />
+                                    <TextBlock x:Name="sessionEnd" Text="Session end" FontSize="16"  HorizontalAlignment="Center" Margin="10, 10, 0, 0" />
+                                    
+                                </StackPanel>
+                            </Grid>
+                            <Grid Grid.Row="1">
+                                <Rectangle Margin="5" Fill="WhiteSmoke" RadiusY="10" Grid.Row="1"  Stroke="Black" StrokeThickness="0">
+                                    <Rectangle.Effect>
+                                        <DropShadowEffect ShadowDepth="2"/>
+                                    </Rectangle.Effect>
+                                </Rectangle>
+                                <StackPanel>
+                                    <TextBlock Text="Session start date" FontSize="16"  HorizontalAlignment="Center" Margin="10, 10, 0, 0" />
+                                    <TextBlock x:Name="sessionStartDate" Text="" FontSize="16"  HorizontalAlignment="Center" Margin="10, 10, 0, 0" />
+                                    <TextBlock Text="Session end date" FontSize="16"  HorizontalAlignment="Center" Margin="10, 10, 0, 0" />
+                                    <TextBlock x:Name="sessionEndDate" Text="" FontSize="16"  HorizontalAlignment="Center" Margin="10, 10, 0, 0" />
+                                    <TextBlock Text="Session state" FontSize="16"  HorizontalAlignment="Center" Margin="10, 10, 0, 0" />
+                                    <materialDesign:PackIcon Kind="Circle" Width="30" Height="30" Margin="10" Foreground="Green" />
+                                </StackPanel>
+                            </Grid>
+
+                        </Grid>
+                    </Grid>
+
+                </Grid>
+                <Grid Background="White">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="15*"/>
+                        <RowDefinition Height="203*"/>
+                    </Grid.RowDefinitions>
+                    <Grid Background="#FFFBF9F9">
+                        <TextBox Width="400" FontSize="20"  materialDesign:HintAssist.Hint="SEARCH..." Style="{DynamicResource MaterialDesignFloatingHintTextBox}"  />
+                    </Grid>
+                    <Grid Grid.Row="1" Background="White" Margin="10">
+                        <Rectangle Fill="#FFF4F4F5" RadiusY="20" RadiusX="20">
+                            <Rectangle.Effect>
+                                <DropShadowEffect Color="#FF6176D4"/>
+                            </Rectangle.Effect>
+
+                        </Rectangle>
+                        <DataGrid x:Name="Sessiongrid" FontSize="15" Margin="10" SelectionChanged="Sessiongrid_SelectionChanged">
+                            <DataGrid.Columns>
+                                <DataGridCheckBoxColumn/>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </Grid>
+                </Grid>
+            </Grid>
+
+        </Grid>
+
+    </Grid>
+
+</UserControl>

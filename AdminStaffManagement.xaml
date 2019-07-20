@@ -1,0 +1,269 @@
+﻿<UserControl x:Class="NSMSoftware.AdminStaffManagement"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:NSMSoftware"
+             mc:Ignorable="d" 
+            xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+
+            TextElement.FontWeight="Regular"
+            TextElement.FontSize="13"
+            TextOptions.TextFormattingMode="Ideal"
+            TextOptions.TextRenderingMode="Auto"
+            FontFamily="{DynamicResource MaterialDesignFont}" MinWidth="980" MinHeight="660">
+
+    <Grid Background="White">
+        <Rectangle Fill="#FFF4F4F5" RadiusY="20" RadiusX="20" Margin="5">
+            <Rectangle.Effect>
+                <DropShadowEffect Color="#FF6176D4"/>
+            </Rectangle.Effect>
+        </Rectangle>
+        <TextBlock x:Name="schoolid"/>
+        <materialDesign:DialogHost IsOpen="False" x:Name="SuccessAlert">
+            <materialDesign:DialogHost.DialogContent>
+                <StackPanel  Width="500" Height="auto" Background="GreenYellow">
+                    <materialDesign:PackIcon Margin="0, 20, 0, 0" Foreground="White" Kind="MarkerCheck" Width="100" Height="100" VerticalAlignment="Center"  HorizontalAlignment="Center"/>
+
+                    <TextBlock Padding="0,5" x:Name="LoginAlertTitle" Text="ALERT" FontWeight="Bold" FontSize="36" TextAlignment="Center" />
+                    <Button Padding="0,5" Width="250" Height="50" Content="CLOSE ALERT" Margin="0, 10, 0, 0" FontSize="24" Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}" CommandTarget="{Binding ElementName=SuccessAlert}" Style="{DynamicResource MaterialDesignFlatButton}" />
+
+                </StackPanel>
+            </materialDesign:DialogHost.DialogContent>
+        </materialDesign:DialogHost>
+        <TabControl Margin="15">
+
+            <TabItem Header="BASIC USER INFORMATION" Padding="0,5" FontSize="20" Width="500" HorizontalAlignment="Center">
+                <Grid Background="#FFE5E5E5" >
+                    <Grid Background="White">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="256*"/>
+                            <ColumnDefinition Width="243*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid Background="White">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="331*"/>
+                                <RowDefinition Height="326*"/>
+                            </Grid.RowDefinitions>
+                            <Grid>
+                                <Rectangle Fill="#FFF4F4F5" Margin="5" RadiusY="10" RadiusX="10">
+                                    <Rectangle.Effect>
+                                        <DropShadowEffect Color="#FF6176D4"/>
+                                    </Rectangle.Effect>
+                                </Rectangle>
+                                <Grid>
+                                    <ScrollViewer VerticalScrollBarVisibility="Hidden">
+                                        <StackPanel Margin="20" Width="500" Height="auto">
+                                            <Label Padding="0,5" Margin="0, 5" FontSize="20" FontWeight="Bold" Content="STAFF PERSONAL DATA" VerticalAlignment="Center" HorizontalAlignment="Center" />
+                                            <TextBox Padding="0,5" x:Name="first_name" materialDesign:HintAssist.Hint="ENTER FIRST NAME" Style="{DynamicResource MaterialDesignFloatingHintTextBox}" Margin="0, 5" FontSize="15"/>
+                                            <TextBox Padding="0,5" x:Name="middle_name" materialDesign:HintAssist.Hint="ENTER MIDDLE NAME" Style="{DynamicResource MaterialDesignFloatingHintTextBox}" Margin="0, 5" FontSize="15"/>
+                                            <TextBox Padding="0,5" x:Name="last_name" materialDesign:HintAssist.Hint="ENTER LAST NAME" Style="{DynamicResource MaterialDesignFloatingHintTextBox}" Margin="0, 5" FontSize="15"/>
+                                            <TextBox Padding="0,5" x:Name="registration_number" materialDesign:HintAssist.Hint="GENERRATE STUDENT ADMISION" Style="{DynamicResource MaterialDesignFloatingHintTextBox}" Margin="0, 10" FontSize="15"/>
+                                            <ComboBox  Padding="0,5" x:Name="gender" materialDesign:HintAssist.Hint="SELECT GENDER"  Margin="0, 10" FontSize="15">
+                                                <ComboBoxItem Content="Male" HorizontalAlignment="Left" Width="498"/>
+                                                <ComboBoxItem Content="Female" HorizontalAlignment="Left" Width="498" />
+                                            </ComboBox>
+                                            <Button x:Name="SaveStaffLoginDetails" Click="SaveStaffLoginDetails_Click"  VerticalAlignment="Bottom" HorizontalAlignment="Center" Content="CREATE NEW RECORD"/>
+                                        </StackPanel>
+                                    </ScrollViewer>
+
+                                </Grid>
+                            </Grid>
+                            <Grid Grid.Row="1">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="20*"/>
+                                    <RowDefinition Height="48*"/>
+                                </Grid.RowDefinitions>
+                                <Rectangle Fill="#FFF4F4F5" Margin="5" RadiusY="10" RadiusX="10" Grid.RowSpan="2" RenderTransformOrigin="0.492,0.418">
+                                    <Rectangle.Effect>
+                                        <DropShadowEffect Color="#FF6176D4"/>
+                                    </Rectangle.Effect>
+                                </Rectangle>
+
+                                <Grid Margin="10" Background="#ffffff">
+                                    <TextBox Padding="0,5" materialDesign:HintAssist.Hint="ENTER REGISTRATION NUMBER" Style="{DynamicResource MaterialDesignFloatingHintTextBox}" Margin="0, 5" FontSize="15"/>
+                                </Grid>
+                                <Grid Grid.Row="1" Margin="10">
+                                    <ListView  x:Name="StaffRegistrations" SelectionChanged="StaffRegistrations_SelectionChanged" FontSize="16" >
+                                        <ListView.View>
+                                            <GridView>
+                                                <GridViewColumn/>
+                                            </GridView>
+                                        </ListView.View>
+                                        <ListViewItem Content="ListViewItem" FontSize="20"/>
+                                    </ListView>
+                                </Grid>
+                            </Grid>
+
+
+                        </Grid>
+                        <Grid Grid.Column="1" Background="White">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="131*"/>
+                                <RowDefinition Height="263*"/>
+                            </Grid.RowDefinitions>
+                            <Grid Background="White">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="263*"/>
+                                    <ColumnDefinition Width="195*"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid Background="White" Margin="5">
+                                    <Rectangle Fill="#FFF4F4F5" RadiusY="10" RadiusX="10">
+                                        <Rectangle.Effect>
+                                            <DropShadowEffect Color="#FF6176D4"/>
+                                        </Rectangle.Effect>
+                                    </Rectangle>
+                                    <Image Source="Assets/logo.png" Width="250"/>
+                                </Grid>
+                                <Grid Grid.Column="1" Background="White" Margin="5">
+                                    <Rectangle Fill="#FFF4F4F5" RadiusY="10" RadiusX="10">
+                                        <Rectangle.Effect>
+                                            <DropShadowEffect Color="#FF6176D4"/>
+                                        </Rectangle.Effect>
+                                    </Rectangle>
+                                    <Button Width="Auto" Height="Auto" x:Name="LoadStaffImage" Click="LoadStaffImage_Click">
+                                        <materialDesign:PackIcon Kind="Camera" Foreground="blue" Width="200" Height="Auto" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
+                                    </Button>
+                                </Grid>
+                            </Grid>
+                            <Grid Grid.Row="1">
+
+                            </Grid>
+                            <Grid Grid.Row="1" Margin="5">
+                                <Rectangle Fill="#FFF4F4F5" RadiusY="10" RadiusX="10" >
+                                    <Rectangle.Effect>
+                                        <DropShadowEffect Color="#FF6176D4"/>
+                                    </Rectangle.Effect>
+                                </Rectangle>
+                                <Grid>
+                                    <ScrollViewer VerticalScrollBarVisibility="Hidden">
+                                        <StackPanel Margin="20" Width="500" Height="auto">
+                                            <TextBlock x:Name="name" Text="first name  middlenae   lastname" HorizontalAlignment="Center" FontWeight="Bold"/>
+                                            <TextBlock x:Name="studentid" Text="first name" HorizontalAlignment="Center" FontWeight="Bold"/>
+                                            <TextBlock x:Name="male"  Text="first name" HorizontalAlignment="Center" FontWeight="Bold"/>
+
+                                            <TextBlock Visibility="Hidden" x:Name="system_users_id"  Text="first name" HorizontalAlignment="Center" FontWeight="Bold"/>
+                                            <TextBlock Visibility="Hidden" x:Name="system_institution_registry_id"  Text="first name" HorizontalAlignment="Center" FontWeight="Bold"/>
+
+
+                                            <TextBlock Text="EMERGENCY CONTACT" Foreground="blue" HorizontalAlignment="Center" FontWeight="Bold"/>
+                                            <TextBox x:Name="emergency_contact_full_name" Padding="0,5" materialDesign:HintAssist.Hint="EMERGENCY CONTACT FULL NAME" Style="{DynamicResource MaterialDesignFloatingHintTextBox}" Margin="0, 5" FontSize="15"/>
+                                            <TextBox x:Name="emergency_contact_contact" Padding="0,5" materialDesign:HintAssist.Hint="EMERGENCY CONTACT NUMBER" Style="{DynamicResource MaterialDesignFloatingHintTextBox}" Margin="0, 5" FontSize="15"/>
+                                            <TextBox x:Name="emergency_contact_email" Padding="0,5" materialDesign:HintAssist.Hint="EMERGENCY CONTACT E-MAIL" Style="{DynamicResource MaterialDesignFloatingHintTextBox}" Margin="0, 5" FontSize="15"/>
+                                            <TextBox x:Name="emergency_contact_location" Padding="0,5" materialDesign:HintAssist.Hint="HOMETOWN / LOCATION" Style="{DynamicResource MaterialDesignFloatingHintTextBox}" Margin="0, 10" FontSize="15"/>
+                                            <ComboBox x:Name="emergency_contact_gender" Padding="0,5" materialDesign:HintAssist.Hint="SELECT GENDER"  Margin="0, 10" FontSize="15">
+                                                <ComboBoxItem Content="Male" HorizontalAlignment="Left" Width="498"/>
+                                                <ComboBoxItem Content="Female" HorizontalAlignment="Left" Width="498" />
+                                            </ComboBox>
+                                            <Button Content="update staff data" x:Name="UpdateStaffData" Click="UpdateStaffData_Click"  Padding="10" Width="auto" Height="auto" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontSize="25" FontWeight="Bold"/>
+                                        </StackPanel>
+                                    </ScrollViewer>
+                                </Grid>
+                            </Grid>
+
+                        </Grid>
+                    </Grid>
+                </Grid>
+            </TabItem>
+
+
+
+            <TabItem Header="USER RECORDS" Padding="0,5" FontSize="20" Width="500" HorizontalAlignment="Center">
+                <Grid Background="White">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="218*"/>
+                    </Grid.RowDefinitions>
+
+                    <Grid Grid.Row="1" Background="White">
+
+
+                        <Grid Background="White">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="19*"/>
+                                <ColumnDefinition Width="9*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid Grid.Column="1" Background="#FFE0DEDE">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="15*"/>
+                                    <RowDefinition Height="203*"/>
+                                </Grid.RowDefinitions>
+                                <Grid Background="#FFA42929">
+                                    <StackPanel VerticalAlignment="center" Orientation="Horizontal" HorizontalAlignment="Right">
+                                        <TextBlock Text="ACTIONS" VerticalAlignment="Center" FontSize="20" FontWeight="Bold" />
+                                        <materialDesign:PopupBox Margin="10" PlacementMode="BottomAndAlignRightEdges" StaysOpen="False" Foreground="White" FontSize="20">
+
+                                            <ListView Width="200">
+                                                <ListViewItem>
+                                                    <StackPanel Orientation="Horizontal">
+                                                        <materialDesign:PackIcon Foreground="green" Kind="pen" Width="25" Height="25" VerticalAlignment="Center" />
+                                                        <TextBlock HorizontalAlignment="Center" Text="Edit" Margin="5" FontSize="15" />
+                                                    </StackPanel>
+                                                </ListViewItem>
+                                                <ListViewItem>
+                                                    <StackPanel Orientation="Horizontal">
+                                                        <materialDesign:PackIcon Foreground="red" Kind="Delete" Width="25" Height="25" VerticalAlignment="Center" />
+                                                        <TextBlock HorizontalAlignment="Center" Text="Delete" Margin="5" FontSize="15" />
+                                                    </StackPanel>
+                                                </ListViewItem>
+                                            </ListView>
+
+
+                                        </materialDesign:PopupBox>
+                                    </StackPanel>
+                                </Grid>
+                                <Grid Grid.Row="1" Background="#FFFBFBFB">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="7*"/>
+                                        <RowDefinition Height="12*"/>
+                                    </Grid.RowDefinitions>
+                                    <Grid Background="White">
+                                        <Image HorizontalAlignment="Left" Margin="10,0,0,0" Width="295" Source="Assets/logo.png"/>
+                                    </Grid>
+                                    <Grid Grid.Row="1" Background="White">
+                                        <ListView>
+                                            <ListView.View>
+                                                <GridView>
+                                                    <GridViewColumn/>
+                                                </GridView>
+                                            </ListView.View>
+                                            <ListViewItem Content="SESSION NAME" Margin="5" FontSize="15" Width="auto"/>
+                                            <ListViewItem Content="Session start" Margin="5" FontSize="15" Width="auto"/>
+                                            <ListViewItem Content="Session end" Margin="5" FontSize="15" Width="auto"/>
+                                            <ListViewItem Content="List View Item" Margin="5" FontSize="15" Width="auto"/>
+                                            <ListViewItem Content="List View Item" Margin="5" FontSize="15" Width="auto"/>
+                                            <ListViewItem Content="List View Item" Margin="5" FontSize="15" Width="auto"/>
+                                        </ListView>
+                                    </Grid>
+                                </Grid>
+
+                            </Grid>
+                            <Grid Background="White">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="15*"/>
+                                    <RowDefinition Height="203*"/>
+                                </Grid.RowDefinitions>
+                                <Grid Background="#FFFBF9F9">
+                                    <TextBox Width="400" FontSize="20"  materialDesign:HintAssist.Hint="SEARCH..." Style="{DynamicResource MaterialDesignFloatingHintTextBox}"  />
+                                </Grid>
+                                <Grid Grid.Row="1" Background="White">
+                                    <DataGrid x:Name="Staffgrid">
+                                        <DataGrid.Columns>
+                                            <DataGridCheckBoxColumn/>
+                                        </DataGrid.Columns>
+                                    </DataGrid>
+                                </Grid>
+                            </Grid>
+                        </Grid>
+
+                    </Grid>
+
+                </Grid>
+            </TabItem>
+
+
+
+        </TabControl>
+
+
+    </Grid>
+</UserControl>

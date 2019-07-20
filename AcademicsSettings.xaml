@@ -1,0 +1,138 @@
+﻿<UserControl
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:NSMSoftware" 
+             
+            xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+
+            xmlns:Custom="http://schemas.microsoft.com/wpf/2008/toolkit" x:Class="NSMSoftware.AcademicsSettings"
+             mc:Ignorable="d"
+
+            TextElement.FontWeight="Regular"
+            TextElement.FontSize="13"
+            TextOptions.TextFormattingMode="Ideal"
+            TextOptions.TextRenderingMode="Auto"
+            FontFamily="{DynamicResource MaterialDesignFont}" MinWidth="980" MinHeight="660">
+
+    <Grid Background="White">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="15*"/>
+            <RowDefinition Height="218*"/>
+        </Grid.RowDefinitions>
+        <Grid/>
+        <TextBlock x:Name="schoolid"/>
+        <TextBlock x:Name="administratorid"/>
+        <Button VerticalAlignment="Top" FontWeight="Bold" FontSize="20" HorizontalAlignment="Left" Content="Create assessments" Margin="10,2,0,0" Padding="5" Height="auto"
+                Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}" 
+                CommandTarget="{Binding ElementName=AssessmentsConfig}" />
+
+
+        <Grid Grid.Row="1" Background="White">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="122*"/>
+                <ColumnDefinition Width="123*"/>
+            </Grid.ColumnDefinitions>
+
+            <materialDesign:DialogHost IsOpen="False" x:Name="AssessmentsConfig">
+                <materialDesign:DialogHost.DialogContent>
+                    <StackPanel Margin="10" Width="600" >
+                        <materialDesign:PackIcon Margin="0, 20, 0, 0" Foreground="Black" Kind="Pen" Width="100" Height="50" VerticalAlignment="Center"  HorizontalAlignment="Center"/>
+
+                        <TextBlock Text="ASSESMENT SETTINGS" FontSize="20" HorizontalAlignment="Center" Margin="0,5,0,0" />
+
+                        <TextBox materialDesign:HintAssist.Hint="CREATE ASSESSMENT" x:Name="assessments" Style="{DynamicResource MaterialDesignFloatingHintTextBox}" Margin="5" FontSize="16" />
+                        <Button  Content="CREATE NEW" x:Name="SetAssessment" Click="SetAssessment_Click" HorizontalAlignment="Center" Margin="5"/>
+
+                        <ListView Margin="5" x:Name="AvailableAssessments" >
+                            <ListView.View>
+                                <GridView>
+                                    <GridViewColumn/>
+                                </GridView>
+                            </ListView.View>
+                            <Label Content="Offered assessments" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="17" FontWeight="Bold"/>
+                            <ListViewItem Content="ListViewItem"/>
+                        </ListView>
+
+                        <Button Padding="0,5" Width="250" Height="50" Content="CLOSE" Background="red" Margin="0, 10, 0, 0" FontSize="24" Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}" CommandTarget="{Binding ElementName=AddAdminPrivilage}" Style="{DynamicResource MaterialDesignFlatButton}" />
+                    </StackPanel>
+                </materialDesign:DialogHost.DialogContent>
+            </materialDesign:DialogHost>
+            <materialDesign:DialogHost IsOpen="False" x:Name="SuccessAlert">
+                <materialDesign:DialogHost.DialogContent>
+                    <StackPanel  Width="500" Height="auto" Background="GreenYellow">
+                        <materialDesign:PackIcon Margin="0, 20, 0, 0" Foreground="White" Kind="Calendar" Width="100" Height="100" VerticalAlignment="Center"  HorizontalAlignment="Center"/>
+
+                        <TextBlock Padding="0,5" x:Name="LoginAlertTitle" Text="ALERT" FontWeight="Bold" FontSize="36" TextAlignment="Center" />
+                        <Button Padding="0,5" Width="250" Height="50" Content="CLOSE ALERT" Margin="0, 10, 0, 0" FontSize="24" Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}" CommandTarget="{Binding ElementName=SuccessAlert}" Style="{DynamicResource MaterialDesignFlatButton}" />
+
+                    </StackPanel>
+                </materialDesign:DialogHost.DialogContent>
+            </materialDesign:DialogHost>
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="221*"/>
+                    <ColumnDefinition Width="267*"/>
+                </Grid.ColumnDefinitions>
+                <Grid>
+                    <Rectangle Fill="#FFFFFF" Margin="5" RadiusY="10" RadiusX="10" Stroke="Black">
+                        <Rectangle.Effect>
+                            <DropShadowEffect ShadowDepth="2"/>
+                        </Rectangle.Effect>
+                    </Rectangle>
+                    <StackPanel Margin="15">
+                        <TextBlock Text="ASSESMENT SETTINGS" FontSize="18" HorizontalAlignment="Center" Margin="0,10,0,10" />
+                        <ComboBox x:Name="CboAvailableCourses" materialDesign:HintAssist.Hint="SELECT COURSE "  Margin="5" FontSize="15">
+                        </ComboBox>
+                        <ComboBox x:Name="CboAvailableAssessments" materialDesign:HintAssist.Hint="SELECT ASSESSENT "  Margin="5" FontSize="15">
+                        </ComboBox>
+                        <TextBox x:Name="outof" materialDesign:HintAssist.Hint="ENTER PEFORMANCE" Style="{DynamicResource MaterialDesignFloatingHintTextBox}" Margin="5" FontSize="16" />
+                        <Button  Content="SUBMIT" x:Name="SubmitCourseAssessment" Click="SubmitCourseAssessment_Click" HorizontalAlignment="Center" Margin="5"/>
+
+
+                    </StackPanel>
+                </Grid>
+                <Grid Grid.Column="1">
+                    <Rectangle Fill="#FFFFFF" Margin="0,5,0,5" RadiusY="10" RadiusX="10" Stroke="Black">
+                        <Rectangle.Effect>
+                            <DropShadowEffect ShadowDepth="2"/>
+                        </Rectangle.Effect>
+                    </Rectangle>
+
+                    <DataGrid Margin="10" x:Name="CourseAssessments" Background="White" />
+
+                </Grid>
+
+            </Grid>
+            <Grid Grid.Column="1">
+                <Rectangle Fill="#FFF4F4F5" Margin="5" RadiusY="10" RadiusX="10" Stroke="Black">
+                    <Rectangle.Effect>
+                        <DropShadowEffect ShadowDepth="2"/>
+                    </Rectangle.Effect>
+                </Rectangle>
+            </Grid>
+            <Grid Grid.Row="1">
+                <Rectangle Fill="#FFF4F4F5" Margin="5" RadiusY="10" RadiusX="10" Stroke="Black">
+                    <Rectangle.Effect>
+                        <DropShadowEffect ShadowDepth="2"/>
+                    </Rectangle.Effect>
+                </Rectangle>
+            </Grid>
+            <Grid Grid.Column="1" Grid.Row="1">
+                <Rectangle Fill="#FFF4F4F5" Margin="5" RadiusY="10" RadiusX="10" Stroke="Black">
+                    <Rectangle.Effect>
+                        <DropShadowEffect ShadowDepth="2"/>
+                    </Rectangle.Effect>
+                </Rectangle>
+            </Grid>
+        </Grid>
+
+    </Grid>
+
+</UserControl>

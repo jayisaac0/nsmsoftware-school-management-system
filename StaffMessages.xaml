@@ -1,0 +1,116 @@
+﻿<UserControl x:Class="NSMSoftware.StaffMessages"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:NSMSoftware"
+             mc:Ignorable="d" 
+
+            xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+
+            TextElement.FontWeight="Regular"
+            TextElement.FontSize="13"
+            TextOptions.TextFormattingMode="Ideal"
+            TextOptions.TextRenderingMode="Auto"
+            FontFamily="{DynamicResource MaterialDesignFont}" MinWidth="980" MinHeight="660">
+
+
+    <Grid Background="White">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="15*"/>
+            <RowDefinition Height="218*"/>
+        </Grid.RowDefinitions>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="163*"/>
+            </Grid.ColumnDefinitions>
+
+
+        </Grid>
+
+
+        <Grid Grid.Row="1" Background="White">
+            <TextBlock x:Name="schoolid"/>
+            <TextBlock x:Name="administratorid"/>
+            <Grid Background="White">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="19*"/>
+                </Grid.ColumnDefinitions>
+                <Grid Background="White">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="49*"/>
+                        <RowDefinition Height="605*"/>
+                    </Grid.RowDefinitions>
+                    <Grid Background="#FFFBF9F9">
+                        <Label Content="My Messages" FontSize="24" Foreground="blue" FontWeight="Bold"/>
+                        <StackPanel VerticalAlignment="center" Orientation="Horizontal" HorizontalAlignment="Right" Background="Aqua">
+                            <TextBlock Text="ACTIONS" VerticalAlignment="Center" FontSize="20" FontWeight="Bold" />
+                            <materialDesign:PopupBox Margin="10" PlacementMode="BottomAndAlignRightEdges" StaysOpen="False" Foreground="White" FontSize="20">
+
+                                <ListView Width="200">
+                                    <ListViewItem>
+
+                                        <StackPanel Orientation="Horizontal">
+                                            <materialDesign:PackIcon Foreground="green" Kind="Delete" Width="25" Height="25" VerticalAlignment="Center" />
+                                            <TextBlock HorizontalAlignment="Center" Text="Delete message" Margin="5" FontSize="15" />
+                                        </StackPanel>
+                                    </ListViewItem>
+                                    <ListViewItem>
+                                        <StackPanel Orientation="Horizontal">
+                                            <materialDesign:PackIcon Foreground="red" Kind="Share" Width="25" Height="25" VerticalAlignment="Center" />
+                                            <TextBlock HorizontalAlignment="Center" Text="Mark message" Margin="5" FontSize="15" />
+                                        </StackPanel>
+                                    </ListViewItem>
+                                </ListView>
+
+
+                            </materialDesign:PopupBox>
+                        </StackPanel>
+                    </Grid>
+                    <Grid Grid.Row="1"/>
+                    <Grid Grid.Row="1"/>
+                    <Rectangle Fill="WhiteSmoke" Margin="5" RadiusY="10" Grid.Row="1" RadiusX="10" Stroke="Black" StrokeThickness="0">
+                        <Rectangle.Effect>
+                            <DropShadowEffect ShadowDepth="2"/>
+                        </Rectangle.Effect>
+                    </Rectangle>
+                    <Grid Grid.Row="1"></Grid>
+                    <Grid Grid.Row="1" />
+
+                    <Grid Grid.Row="1"/>
+
+                    <Grid Grid.Row="1"/>
+                    <ListView Grid.Row="1" Margin="10">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn/>
+                            </GridView>
+                        </ListView.View>
+                        <ListViewItem>
+                            <StackPanel Orientation="Horizontal">
+                                <materialDesign:PackIcon Kind="FileDocument" Width="25" Height="25" VerticalAlignment="Center"/>
+                                <TextBlock Text="Materials Materials Materials Materials " FontSize="14" VerticalAlignment="center" Margin="20, 10"/>
+                            </StackPanel>
+                        </ListViewItem>
+                        <ListViewItem>
+                            <StackPanel Orientation="Horizontal">
+                                <materialDesign:PackIcon Kind="FileDocument" Width="25" Height="25" VerticalAlignment="Center"/>
+                                <TextBlock Text="Materials Materials Materials Materials " FontSize="14" VerticalAlignment="center" Margin="20, 10"/>
+                            </StackPanel>
+                        </ListViewItem>
+                        <ListViewItem>
+                            <StackPanel Orientation="Horizontal">
+                                <materialDesign:PackIcon Kind="FileDocument" Width="25" Height="25" VerticalAlignment="Center"/>
+                                <TextBlock Text="Materials Materials Materials Materials " FontSize="14" VerticalAlignment="center" Margin="20, 10"/>
+                            </StackPanel>
+                        </ListViewItem>
+                    </ListView>
+
+                </Grid>
+            </Grid>
+
+        </Grid>
+
+    </Grid>
+
+</UserControl>

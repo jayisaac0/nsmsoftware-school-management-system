@@ -1,0 +1,197 @@
+﻿<UserControl x:Class="NSMSoftware.StaffAdminDashboard"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:NSMSoftware"
+             mc:Ignorable="d" 
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal"
+        TextOptions.TextRenderingMode="Auto"
+        Background="{DynamicResource MaterialDesignPaper}"
+        FontFamily="{DynamicResource MaterialDesignFont}" MinWidth="960" MinHeight="640" d:DesignWidth="1405.212" >
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="235*"  x:Name="GridMenu" />
+            <ColumnDefinition Width="1077*"/>
+        </Grid.ColumnDefinitions>
+        <Grid  HorizontalAlignment="Left"  Background="#FF9094F0" Grid.ColumnSpan="2" Width="237">
+
+            <materialDesign:TransitioningContent x:Name="TransitoningContentSlide" OpeningEffect="{materialDesign:TransitionEffect SlideInFromLeft, Duration=0:0:0:1}">
+                <StackPanel Background="orange">
+                    <StackPanel.Effect>
+                        <DropShadowEffect BlurRadius="5" RenderingBias="Quality"/>
+                    </StackPanel.Effect>
+
+                    <Grid  Height="130" >
+                        <Button x:Name="ButtonCloseMenu" Click="ButtonCloseMenu_Click" Background="{x:Null}" BorderBrush="{x:Null}" VerticalAlignment="top" HorizontalAlignment="Right"  Height="53" Width="65" Visibility="Collapsed">
+                            <materialDesign:PackIcon Kind="ArrowLeft"  Foreground="#FF4D009B" FontWeight="Bold" Height="43" Width="48"/>
+                        </Button>
+                        <Button x:Name="ButtonOpenMenu" Click="ButtonOpenMenu_Click" Background="{x:Null}" BorderBrush="{x:Null}" VerticalAlignment="top" HorizontalAlignment="Right" Height="53" Width="65">
+                            <materialDesign:PackIcon Kind="Menu"  Foreground="#FF4D009B" FontWeight="Bold" Height="43" Width="48"/>
+                        </Button>
+                        <Image Source="Assets/logo.png" />
+                    </Grid>
+
+                    <ListView x:Name="ListViewMenu" SelectionChanged="ListViewMenu_SelectionChanged" Foreground="#FF1368BD" UseLayoutRounding="False" ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.HorizontalScrollBarVisibility="Auto">
+                        <ListViewItem Height="60" Margin="0,0,0,5" Background="#FF00FF80">
+                            <ListViewItem.Effect>
+                                <DropShadowEffect BlurRadius="5" RenderingBias="Quality"/>
+                            </ListViewItem.Effect>
+                            <StackPanel Orientation="Horizontal">
+                                <materialDesign:PackIcon Kind="ViewDashboard" Width="25" Height="25" VerticalAlignment="Center"/>
+                                <TextBlock Text="Staff Dashboard" FontSize="14" VerticalAlignment="center" Margin="20, 10"/>
+                            </StackPanel>
+                        </ListViewItem>
+                        <ListViewItem Height="60" Margin="0,0,0,5" Background="#FF00FF80">
+                            <ListViewItem.Effect>
+                                <DropShadowEffect BlurRadius="5" RenderingBias="Quality"/>
+                            </ListViewItem.Effect>
+                            <StackPanel Orientation="Horizontal">
+                                <materialDesign:PackIcon Kind="Pen" Width="25" Height="25" VerticalAlignment="Center"/>
+                                <TextBlock Text="Assignments" FontSize="14" VerticalAlignment="center" Margin="20, 10"/>
+                            </StackPanel>
+                        </ListViewItem>
+                        <ListViewItem Height="60" Margin="0,0,0,5" Background="#FF00FF80">
+                            <ListViewItem.Effect>
+                                <DropShadowEffect BlurRadius="5" RenderingBias="Quality"/>
+                            </ListViewItem.Effect>
+                            <StackPanel Orientation="Horizontal">
+                                <materialDesign:PackIcon Kind="Library" Width="25" Height="25" VerticalAlignment="Center"/>
+                                <TextBlock Text="Examination grading" FontSize="14" VerticalAlignment="center" Margin="20, 10"/>
+                            </StackPanel>
+                        </ListViewItem>
+                        <ListViewItem Height="60" Margin="0,0,0,5" Background="#FF00FF80">
+                            <ListViewItem.Effect>
+                                <DropShadowEffect BlurRadius="5" RenderingBias="Quality"/>
+                            </ListViewItem.Effect>
+                            <StackPanel Orientation="Horizontal">
+                                <materialDesign:PackIcon Kind="Account" Width="25" Height="25" VerticalAlignment="Center"/>
+                                <TextBlock Text="Forumn discusions" FontSize="14" VerticalAlignment="center" Margin="20, 10"/>
+                            </StackPanel>
+                        </ListViewItem>
+                        <ListViewItem Height="60" Margin="0,0,0,5" Background="#FF00FF80">
+                            <ListViewItem.Effect>
+                                <DropShadowEffect BlurRadius="5" RenderingBias="Quality"/>
+                            </ListViewItem.Effect>
+                            <StackPanel Orientation="Horizontal">
+                                <materialDesign:PackIcon Kind="Briefcase" Width="25" Height="25" VerticalAlignment="Center"/>
+                                <TextBlock Text="Level Peformance" FontSize="14" VerticalAlignment="center" Margin="20, 10"/>
+                            </StackPanel>
+                        </ListViewItem>
+                        <ListViewItem Height="60" Margin="0,0,0,5" Background="#FF00FF80">
+                            <ListViewItem.Effect>
+                                <DropShadowEffect BlurRadius="5" RenderingBias="Quality"/>
+                            </ListViewItem.Effect>
+                            <StackPanel Orientation="Horizontal">
+                                <materialDesign:PackIcon Kind="Web" Width="25" Height="25" VerticalAlignment="Center"/>
+                                <TextBlock Text="Level advancement" FontSize="14" VerticalAlignment="center" Margin="20, 10"/>
+                            </StackPanel>
+                        </ListViewItem>
+                        <ListViewItem Height="60" Margin="0,0,0,5" Background="#FF00FF80">
+                            <ListViewItem.Effect>
+                                <DropShadowEffect BlurRadius="5" RenderingBias="Quality"/>
+                            </ListViewItem.Effect>
+                            <StackPanel Orientation="Horizontal">
+                                <materialDesign:PackIcon Kind="FileDocument" Width="25" Height="25" VerticalAlignment="Center"/>
+                                <TextBlock Text="Materials" FontSize="14" VerticalAlignment="center" Margin="20, 10"/>
+                            </StackPanel>
+                        </ListViewItem>
+                        <ListViewItem Height="60" Margin="0,0,0,5" Background="#FF00FF80">
+                            <ListViewItem.Effect>
+                                <DropShadowEffect BlurRadius="5" RenderingBias="Quality"/>
+                            </ListViewItem.Effect>
+                            <StackPanel Orientation="Horizontal">
+                                <materialDesign:PackIcon Kind="ViewDashboard" Width="25" Height="25" VerticalAlignment="Center"/>
+                                <TextBlock Text="Staff Messages" FontSize="14" VerticalAlignment="center" Margin="20, 10"/>
+                            </StackPanel>
+                        </ListViewItem>
+                        <ListViewItem Height="60" Margin="0,0,0,5" Background="#FF00FF80">
+                            <ListViewItem.Effect>
+                                <DropShadowEffect BlurRadius="5" RenderingBias="Quality"/>
+                            </ListViewItem.Effect>
+                            <StackPanel Orientation="Horizontal">
+                                <materialDesign:PackIcon Kind="Settings" Width="25" Height="25" VerticalAlignment="Center"/>
+                                <TextBlock Text="Settings" FontSize="14" VerticalAlignment="center" Margin="20, 10"/>
+                            </StackPanel>
+                        </ListViewItem>
+
+                    </ListView>
+                </StackPanel>
+            </materialDesign:TransitioningContent>
+
+        </Grid>
+
+        
+        <Grid Grid.Column="1" Background="White">
+            
+            <Grid.RowDefinitions>
+                <RowDefinition Height="75*"/>
+                <RowDefinition Height="617*"/>
+            </Grid.RowDefinitions>
+            <Grid Background="#FF00DADA" Margin="0,0,0,5">
+
+                <StackPanel VerticalAlignment="center" Orientation="Horizontal" HorizontalAlignment="Right">
+                    <TextBlock Text="MENU" VerticalAlignment="Center" FontSize="20" FontWeight="Bold" />
+                    <materialDesign:PopupBox Margin="10" PlacementMode="BottomAndAlignRightEdges" StaysOpen="False" Foreground="White" FontSize="20">
+                        <StackPanel Width="200">
+                            <Button Content="Accounts" />
+                            <Button Content="Management" />
+                            <Button Content="Settings" />
+                            <Separator/>
+                            <Button Content="Logout" x:Name="CloseButton" Click="CloseButton_Click"/>
+                        </StackPanel>
+                    </materialDesign:PopupBox>
+                </StackPanel>
+
+            </Grid>
+
+            <Grid Grid.Row="1" Background="White" x:Name="GridPrincipal" >
+                <Grid  Margin="50" >
+
+                    <Rectangle Fill="#FFD6EDEE" Stroke="Black"   RadiusX="20" RadiusY="20" Margin="30" StrokeThickness="0">
+
+
+
+                    </Rectangle>
+                    <Grid>
+                        <TextBlock x:Name="sid"/>
+                        <TextBlock x:Name="schoolid"/>
+                        <TextBlock x:Name="administratorid"/>
+                        <materialDesign:TransitioningContent  OpeningEffect="{materialDesign:TransitionEffect SlideInFromTop, Duration=0:0:0:2}">
+                            <StackPanel Margin="20" Width="500" Height="auto">
+                                <TextBlock Padding="0,5" Text="Login below" FontWeight="Bold" FontSize="36" TextAlignment="Center" Background="#FF75AAF5" />
+                                <Image Margin="0, 20, 0, 0" Source="Assets/logo.png" Width="200" Height="auto"/>
+                                <TextBox Padding="0,5" materialDesign:HintAssist.Hint="ENTER SYSTEM ID" Style="{DynamicResource MaterialDesignFloatingHintTextBox}" Margin="0, 10" FontSize="20"/>
+                                <PasswordBox Padding="0,5" materialDesign:HintAssist.Hint="ENTER PASSWORD" Style="{DynamicResource MaterialDesignFloatingHintPasswordBox}" Margin="0, 10" FontSize="20"/>
+                            </StackPanel>
+
+                        </materialDesign:TransitioningContent>
+                        <Button Padding="0,5" Width="200" Height="50" VerticalAlignment="Bottom" Content="Login here" FontSize="24" 
+                                        Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}" 
+                                        CommandTarget="{Binding ElementName=LoginModal}" />
+                        <materialDesign:DialogHost IsOpen="False" x:Name="LoginModal">
+                            <materialDesign:DialogHost.DialogContent>
+                                <StackPanel Margin="20" Width="500" Height="auto">
+                                    <Image Margin="0, 20, 0, 0" Source="Assets/logo.png" Width="200" Height="auto"/>
+                                    <TextBox Padding="0,5" materialDesign:HintAssist.Hint="ENTER ADMIN SYSTEM ID" Style="{DynamicResource MaterialDesignFloatingHintTextBox}" Margin="0, 10" FontSize="20"/>
+                                    <Button Padding="0,5" Width="250" Height="50"  Content="Access Module" Margin="0, 10, 0, 0" FontSize="24"
+                            Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}" 
+                            CommandTarget="{Binding ElementName=LoginModal}" 
+                            Style="{DynamicResource MaterialDesignFlatButton}" />
+
+                                </StackPanel>
+                            </materialDesign:DialogHost.DialogContent>
+                        </materialDesign:DialogHost>
+                    </Grid>
+
+                </Grid>
+            </Grid>
+        </Grid>
+
+    </Grid>
+</UserControl>
